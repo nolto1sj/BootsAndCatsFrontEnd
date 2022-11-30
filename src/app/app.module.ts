@@ -8,6 +8,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumReviewComponent } from './album-review/album-review.component';
 import { HeaderComponent } from './header/header.component';
+import { AlbumFilterFormComponent } from './album-filter-form/album-filter-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { HeaderComponent } from './header/header.component';
     SignupComponent,
     AlbumsComponent,
     AlbumReviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    AlbumFilterFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

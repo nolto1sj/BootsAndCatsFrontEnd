@@ -8,8 +8,11 @@ import { Albums } from './interfaces/album';
 })
 export class BootsAndCatsService {
 
+// dependency injection
   constructor(private httpClient: HttpClient) { }
+
   getAlbums(): Observable<Albums>{
+
     // Not sure if this is the correct link
     return this.httpClient.get<Albums>("https://api.spotify.com/v1/albums");
   }

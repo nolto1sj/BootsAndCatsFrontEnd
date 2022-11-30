@@ -9,12 +9,13 @@ import { Albums } from '../interfaces/album';
 })
 export class AlbumsComponent implements OnInit {
 //new property
-albums: Albums = {} as Albums;
+  albums: Albums = {} as Albums;
+
   constructor(private bootsAndCatsService: BootsAndCatsService) { }
 
   ngOnInit(): void {
     this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = response;})
-    //alternatively, this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = (response as any).albums.Item;})
+    //this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = (response as any).albums.Item;})
   }
 
 }
