@@ -9,8 +9,10 @@ import { User } from './interfaces/user';
   providedIn: 'root'
 })
 export class BootsAndCatsService {
-  backendURL: string = '';
-  
+
+  //Each developer will have to modify per-swagger
+  backendURL: string = 'https://localhost:7274/api';
+
 // dependency injection
   constructor(private httpClient: HttpClient) { }
 
