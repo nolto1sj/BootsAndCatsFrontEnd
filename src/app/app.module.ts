@@ -10,6 +10,8 @@ import { AlbumReviewComponent } from './album-review/album-review.component';
 import { HeaderComponent } from './header/header.component';
 import { AlbumFilterFormComponent } from './album-filter-form/album-filter-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddReviewFormComponent } from './add-review-form/add-review-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { HttpClientModule } from '@angular/common/http';
     AlbumsComponent,
     AlbumReviewComponent,
     HeaderComponent,
-    AlbumFilterFormComponent
+    AlbumFilterFormComponent,
+    AddReviewFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
