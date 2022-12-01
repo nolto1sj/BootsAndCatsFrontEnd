@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BootsAndCatsBackendService } from '../boots-and-cats-backend.service';
 import { BootsAndCatsService } from '../boots-and-cats.service';
 import { Review } from '../interfaces/review';
 
@@ -10,7 +11,7 @@ import { Review } from '../interfaces/review';
 export class AlbumReviewComponent implements OnInit {
   reviews: Review[] = [];
 
-  constructor(private service: BootsAndCatsService) { }
+  constructor(private service: BootsAndCatsBackendService) { }
 
   ngOnInit(): void {
     this.loadReviews();
