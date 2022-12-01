@@ -7,13 +7,17 @@ import { Albums } from './interfaces/album';
   providedIn: 'root'
 })
 export class BootsAndCatsService {
+  getAlbumURL: string = "https://api.spotify.com/v1/albums/"
+  
 
 // dependency injection
   constructor(private httpClient: HttpClient) { }
 
-  getAlbums(): Observable<Albums>{
+  // getAlbumById(id: string): Observable<Albums>{
 
-    // Not sure if this is the correct link
-    return this.httpClient.get<Albums>("https://api.spotify.com/v1/albums");
-  }
+  //   return this.httpClient.get<Albums>(this.getAlbumURL + id);
+  // }
+
+  // getAlbumId(albumName: string): Observable<string>{
+  // }
 }
