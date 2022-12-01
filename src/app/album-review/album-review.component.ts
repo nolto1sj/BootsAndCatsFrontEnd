@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { BootsAndCatsBackendService } from '../boots-and-cats-backend.service';
-import { BootsAndCatsService } from '../boots-and-cats.service';
+import { Albums } from '../interfaces/album';
 import { Review } from '../interfaces/review';
+import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
 
 @Component({
   selector: 'app-album-review',
