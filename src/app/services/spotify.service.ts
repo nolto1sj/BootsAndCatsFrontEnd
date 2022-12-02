@@ -7,16 +7,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorizeService {
+export class SpotifyService {
   constructor(private httpClient: HttpClient) { }
-
 
   client_id: string =  "59a2dea8cf794f3494f77b182096c100"; 
   client_secret: string = "29e6648865d948c0b884599dcf6ca6f1";
   
   clientInfo: string = window.btoa(this.client_id + ':' + this.client_secret)
 
-  
   getToken = async () => {
       console.log("function entered");
       const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -35,7 +33,6 @@ export class AuthorizeService {
   }
 
   TOKEN = this.getToken()
-
 }
 
 

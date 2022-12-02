@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthorizeService } from './authorize.service';
+import { SpotifyService } from './spotify.service';
 
-describe('AuthorizeService', () => {
-  let service: AuthorizeService;
+describe('SpotifyService', () => {
+  let service: SpotifyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AuthorizeService);
+    service = TestBed.inject(SpotifyService);
   });
 
   it('should be created', () => {

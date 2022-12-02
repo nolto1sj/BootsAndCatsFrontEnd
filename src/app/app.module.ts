@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumReviewComponent } from './album-review/album-review.component';
 import { HeaderComponent } from './header/header.component';
+import { SpotifyService } from './services/spotify.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AddReviewFormComponent } from './add-review-form/add-review-form.component';
@@ -33,7 +34,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SpotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
