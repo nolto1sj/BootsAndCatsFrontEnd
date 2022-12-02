@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddReviewFormComponent } from './add-review-form/add-review-form.component';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterFormComponent } from './search-filter-form/search-filter-form.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchFilterFormComponent } from './search-filter-form/search-filter-fo
     AlbumReviewComponent,
     HeaderComponent,
     AddReviewFormComponent,
-    SearchFilterFormComponent
+    SearchFilterFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
