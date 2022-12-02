@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Albums } from '../interfaces/album';
+import { Review } from '../interfaces/review';
+import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
 
 @Component({
   selector: 'app-album-review',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./album-review.component.css']
 })
 export class AlbumReviewComponent implements OnInit {
+  reviews: Review[] = [];
 
-  constructor() { }
+  constructor(private service: BootsAndCatsBackendService) { }
 
   ngOnInit(): void {
+    this.loadReviews();
+  }
+  
+  //Method to load reviews
+  loadReviews = (): void => {
+    this.service.getReviews().subscribe((data: Review[]) => this.reviews = data);
+  }
+
+  //Method to delete review and load reviews afterwards
+  removeReview = (id: number): void => {
+    this.service.deleteReview(id).subscribe(() => this.loadReviews());
+  }
+
+  //Method to add review and load reviews afterwards
+  addReview = (review: Review): void => {
+    this.service.addReview(review).subscribe(() => this.loadReviews());
   }
 
 }
+
+
+
+

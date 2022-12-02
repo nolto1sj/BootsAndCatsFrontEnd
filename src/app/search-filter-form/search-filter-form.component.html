@@ -1,0 +1,45 @@
+<!-- Search for album -->
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <div class="form-group">
+            <input [(ngModel)]="searchQuery" (keyup)="searchAlbums()" type="search" class="">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Artist Information -->
+<section>
+  <div class="container">
+    <div class="row" *ngFor="let item of items">
+      <div class="col">
+        <div class="card mt-3">
+          <div class="card-header bg-primary text-white">
+            <h2>{{items.album.name}}</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <img [src]="items.album.images" class="img-fluid img-thumbnail" alt="">
+                <div class="col-md-9">
+                  <h4 class="display-3 text-primary">{{items.album.artists}}</h4>
+                  <p class="h2">Release Date: {{items.album.release_date}}</p>
+                  <p class="h5">Genre: {{items.item.genres}}</p>
+                  <p class="h5">Tracks: {{items.album.total_tracks}}</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

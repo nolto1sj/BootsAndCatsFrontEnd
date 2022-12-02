@@ -1,1 +1,56 @@
-<p>album-review works!</p>
+<!-- <p>album-review works!</p> -->
+<style>
+    .review-table {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    .review-table td, #products th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    .review-table tr:nth-child(even){background-color: #f2f2f2;}
+    
+    .review-table tr:hover {background-color: #ddd;}
+    
+    .review-table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: black;
+      color: green;
+      font-family: unset;
+    }
+</style>
+<div class="album-review-container">
+    <!-- <app-filter-form (filterUpdate)="changeFilter($event)"></app-filter-form> -->
+    <app-add-review-form (reviewSave)="addReview($event)"></app-add-review-form>
+    <p></p>
+
+    <table class="review-table">
+      <tr>
+        <th>Rating</th>
+        <th>Comments</th>
+        <th>Recommended</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let review of reviews; index as i">
+        <td>{{ review.Rating }}</td>
+        <td>{{ review.ReviewContent }}</td>
+        <td>{{ review.Recommendation }}</td>
+        <td *ngIf="review.Recommendation">✓</td>
+        <td *ngIf="!review.Recommendation"></td>
+        <td>{{ review.DateSubmitted }}</td>
+        <td>
+          <button (click)="removeReview(review.Id!)">
+            <i class="fa-solid fa-trash-can" title="Delete"></i>
+          </button>
+        </td>
+      </tr>
+    </table>
+   
+  </div>
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BootsAndCatsService } from '../boots-and-cats.service';
+
 import { Albums } from '../interfaces/album';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
 
 @Component({
   selector: 'app-albums',
@@ -14,7 +15,7 @@ export class AlbumsComponent implements OnInit {
   constructor(private bootsAndCatsService: BootsAndCatsService) { }
 
   ngOnInit(): void {
-    this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = response;})
+    this.bootsAndCatsService.displayAlbums().subscribe((response: Albums) => {this.albums = response;})
     //this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = (response as any).albums.Item;})
   }
 
