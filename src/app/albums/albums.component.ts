@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Albums } from '../interfaces/album';
+import { SearchFeature } from '../interfaces/search-feature';
+import { AuthorizeService } from '../services/authorize.service';
 import { BootsAndCatsService } from '../services/boots-and-cats.service';
 
 @Component({
@@ -10,13 +12,18 @@ import { BootsAndCatsService } from '../services/boots-and-cats.service';
 })
 export class AlbumsComponent implements OnInit {
 //new property
+  searchFeature: SearchFeature = {} as SearchFeature;
   albums: Albums = {} as Albums;
+  albumTest: string = "DAMN"
 
-  constructor(private bootsAndCatsService: BootsAndCatsService) { }
+  constructor(private spotifyService: AuthorizeService) { }
 
   ngOnInit(): void {
-    this.bootsAndCatsService.displayAlbums().subscribe((response: Albums) => {this.albums = response;})
-    //this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = (response as any).albums.Item;})
+    this.spotifyService.getAllAlbums(this.albumTest).subscribe((response: SearchFeature) => {this.searchFeature = response;});
+    console.log(this.searchFeature);
+    
+    
   }
+
 
 }

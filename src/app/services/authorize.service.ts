@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SearchFeature } from '../interfaces/search-feature';
 
 
 @Injectable({
@@ -15,6 +16,8 @@ export class AuthorizeService {
   client_secret: string = "29e6648865d948c0b884599dcf6ca6f1";
   
   clientInfo: string = window.btoa(this.client_id + ':' + this.client_secret)
+
+
 
   
   getToken = async () => {
@@ -36,7 +39,40 @@ export class AuthorizeService {
 
   TOKEN = this.getToken()
 
+  // private httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `'Bearer ${this.TOKEN}'`
+  //   })
+  // }
+
+  headers = new HttpHeaders({
+    "Content-Type": "application/json",
+    "Accept" : "application/json",
+    "Authorization" : "Bearer BQDkObBOD9zjQGGyBJueIWagq5n1skbJWGlUCwDktZVDquw4W6opG345-b_o0JMDRsopHTw-IdshJH1ShYS2Pj_5oeX0FY9mP8DQ8UdCJpuRFrGADQqAf6X9hGY7f-Ig2T-V0ywNBAYR3ZfyRZjudn3xZ7urgM7H9HtvM9jDnpIAmy7wogvQbqHij84pIGdQkLxxbqGRDgzVSP_qW4gs7Lw558sl01rY_uIMNNm6WW19VQrjgPBCVKf_Cg",
+  });
+
+
+
+  
+getAllAlbums(searchQuery: string): Observable<SearchFeature>{
+  // let headers = new HttpHeaders();
+  // headers.set('Accept', 'application/json');
+  // headers.set('Content-Type', 'application/json');
+  // headers.set('Authorization', `'Bearer ${this.TOKEN}'`);
+  
+  
+  const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10&offset=5`;
+  console.log(albumURL);
+  console.log(this.headers);
+  
+    return this.httpClient.get<SearchFeature>(albumURL, {headers: this.headers});
+  }
+
 }
+
+
 
 
 
