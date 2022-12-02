@@ -1,0 +1,32 @@
+
+<form (ngSubmit)="submit()" class="add-review-form">
+    <h2 class="add-review-heading">Add a Review</h2>
+
+    <p>
+      <label for="Rating">Rating:</label>
+      <input type="number"
+             name="rating"
+             id="rating"
+             [(ngModel)]="rating"
+             min="1"
+             max="5"
+             />
+             
+    </p>
+    <p>
+      <label for="ReviewContent">Comments:</label>
+      <input type="text"
+             name="ReviewContent"
+             id="ReviewContent"
+             [(ngModel)]="reviewContent" />
+    </p>
+    <p>
+      <label for="recommendation">Recommend:</label>
+      <input type="checkbox"
+             name="recommendation"
+             id="recommendation"
+             [(ngModel)]="recommendation" />
+    </p>
+    <button>Submit</button>
+  </form>
+

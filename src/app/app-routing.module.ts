@@ -7,10 +7,11 @@ import { AlbumsComponent } from './albums/albums.component';
 import { AlbumReviewComponent } from './album-review/album-review.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'albums', component: AlbumsComponent },
-  { path: 'album-review', component: AlbumReviewComponent },
+  { path: 'review', component: AlbumReviewComponent },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
 ];
 
 
