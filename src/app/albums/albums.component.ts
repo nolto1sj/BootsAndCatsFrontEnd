@@ -15,8 +15,8 @@ export class AlbumsComponent implements OnInit {
   constructor(private bootsAndCatsService: BootsAndCatsService) { }
 
   ngOnInit(): void {
-    this.bootsAndCatsService.displayAlbums().subscribe((response: Albums) => {this.albums = response;})
-    //this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = (response as any).albums.Item;})
+    // this.bootsAndCatsService.displayAlbums().subscribe((response: Albums) => {this.albums = response;})
+    // this.bootsAndCatsService.getAlbums().subscribe((response: Albums) => {this.albums = (response as any).albums.Item;})
   }
 
 }

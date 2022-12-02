@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SearchFeature } from '../interfaces/search-feature';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpotifyService {
+export class AuthorizeService {
   constructor(private httpClient: HttpClient) { }
+
 
   client_id: string =  "59a2dea8cf794f3494f77b182096c100"; 
   client_secret: string = "29e6648865d948c0b884599dcf6ca6f1";
+  
   clientInfo: string = window.btoa(this.client_id + ':' + this.client_secret)
 
+  
   getToken = async () => {
       console.log("function entered");
       const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -34,30 +36,7 @@ export class SpotifyService {
 
   TOKEN = this.getToken()
 
-  headers = new HttpHeaders({
-    "Content-Type": "application/json",
-    "Accept" : "application/json",
-    "Authorization" : "Bearer BQB7oaMLBjjgSq2poKc3IfKnCzuE3jEo5d1ij1zJYdJAou0Z5S_eNAxbABXDfuLVh1kc7D7og6zTmic9Y4YSULY8-hhLi1XP6iV1YIgufgUOoFpXHmoURfqiCnJdMRhogmE5kDHVcJKY6KjMYS36FLFeYF8gtY58fUpwm-XzqsimuS4KybR_F9yK2_JDzU_WgJiYCZIdMmzJ2oA5qN1VMkOZFI23KtYT2_bMjEqtcJZk9-JqcQmVWFF1YA", //this is where we will be pasting our token from postman for right now
-  });
-
-  getAllAlbums(searchQuery: string): Observable<SearchFeature>{ //search feature that takes in an album name and returns a SearchFeature
-    const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10&offset=5`;
-
-    console.log(albumURL);
-    console.log(this.headers);
-    
-    return this.httpClient.get<SearchFeature>(albumURL, {headers: this.headers});
-  }
-  
-  // //Method to get albums
-  // displayAlbums(): Observable<Albums>{
-  //   const albumURL = 'https://api.spotify.com/v1/albums?limit=10&offset=5'
-  //   // Not sure if this is the correct link. Added a limit of 10
-  //     return this.httpClient.get<Albums>(albumURL, this.headers);
-  //   }
 }
-
-
 
 
 
@@ -123,5 +102,33 @@ export class SpotifyService {
   // currentPlaylist: string = "";
   // radioButtons = [];
   
+  // AUTHORIZE: string = "https://accounts.spotify.com/authorize"
+  // TOKEN: string = "https://accounts.spotify.com/api/token";
+
+
+  // PLAYLISTS: string = "https://api.spotify.com/v1/me/playlists";
+  // DEVICES: string = "https://api.spotify.com/v1/me/player/devices";
+  // PLAY: string = "https://api.spotify.com/v1/me/player/play";
+  // PAUSE: string = "https://api.spotify.com/v1/me/player/pause";
+  // NEXT: string = "https://api.spotify.com/v1/me/player/next";
+  // PREVIOUS: string = "https://api.spotify.com/v1/me/player/previous";
+  // PLAYER: string = "https://api.spotify.com/v1/me/player";
+  // TRACKS: string = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
+  // CURRENTLYPLAYING: string = "https://api.spotify.com/v1/me/player/currently-playing";
+  // SHUFFLE: string = "https://api.spotify.com/v1/me/player/shuffle";
+
+  // requestAuthorization = (): void => {
+  //   localStorage.setItem("client_id", this.client_id);
+  //   localStorage.setItem("client_secret", this.client_secret);
+
+  //   let url: string = this.AUTHORIZE;
+  //   url += "?client_id=" + this.client_id;
+  //   url += "&response_type=code";
+  //   url += "&redirect_uri=" + encodeURI(this.redirect_uri);
+  //   url += "&show_dialog=true";
+  //   url += "&scope=playlist-modify-public playlist-read-private playlist-modify-private"
+  //   window.location.href = url;
+  // }
+
   
 

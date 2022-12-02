@@ -26,7 +26,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderComponent,
     AddReviewFormComponent,
     SearchFilterFormComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

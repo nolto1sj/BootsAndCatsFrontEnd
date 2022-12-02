@@ -19,18 +19,4 @@ private httpOptions = {
 }
 // dependency injection
   constructor(private httpClient: HttpClient) { }
-
-  //Method to get albums
-  displayAlbums(): Observable<Albums>{
-  const albumURL = 'https://api.spotify.com/v1/albums?limit=10&offset=5'
-  // Not sure if this is the correct link. Added a limit of 10
-    return this.httpClient.get<Albums>(albumURL, this.httpOptions);
-  }
-
-  // Method to search albums
-  getAllAlbums(searchQuery: string): Observable<SearchFeature>{
-  const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10&offset=5`;
-    return this.httpClient.get<SearchFeature>(albumURL, this.httpOptions);
-  }
-
 }

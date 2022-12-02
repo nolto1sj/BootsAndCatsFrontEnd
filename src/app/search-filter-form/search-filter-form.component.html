@@ -5,34 +5,33 @@
       <div class="col-md-4">
         <form>
           <div class="form-group">
-            <input [(ngModel)]="searchQuery" (keyup)="searchAlbums()" type="search" class="">
+            <input [(ngModel)]="searchQuery" name="query" placeholder="Search Album..." (keyup)="searchAlbums()" type="search" class="form-control">
           </div>
         </form>
       </div>
     </div>
   </div>
-
 </section>
 
-<!-- Artist Information -->
+<!-- <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE-->
+<!-- Album Information -->
 <section>
   <div class="container">
-    <div class="row" *ngFor="let item in items">
-      <div class="col">
+    <div class="row">
+      <div class="col" *ngFor="let item in searchAPIResponse">
         <div class="card mt-3">
           <div class="card-header bg-primary text-white">
-            <h2>{{items.album.name}}</h2>
+            <h2>{{item.album.name}}</h2>
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-md-3">
-                <img [src]="items.album.images" class="img-fluid img-thumbnail" alt="">
+                <img [src]="item.album.images[0]" class="img-fluid img-thumbnail" alt="">
                 <div class="col-md-9">
-                  <h4 class="display-3 text-primary">{{items.album.artists}}</h4>
-                  <p class="h2">Release Date: {{items.album.release_date}}</p>
-                  <p class="h5">Genre: {{items.item.genres}}</p>
-                  <p class="h5">Tracks: {{items.album.total_tracks}}</p>
-
+                  <h4 class="display-3 text-primary">{{item.album.artists}}</h4>
+                  <p class="h2">Release Date: {{item.album.release_date}}</p>
+                  <p class="h5">Genre: {{item.album.genres}}</p>
+                  <p class="h5">Tracks: {{item.album.total_tracks}}</p>
                 </div>
               </div>
             </div>
