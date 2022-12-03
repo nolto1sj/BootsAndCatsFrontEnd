@@ -15,7 +15,10 @@
 
 <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE
 <!-- Album Information -->
-<section>
+<div class="row" *ngFor="let album of albumResponse">
+  <h2>{{album.name}}</h2>
+</div>
+<!-- <section>
   <div class="container">
     <div class="row" *ngFor="let item in searchAPIResponse">
       <div class="col">
@@ -41,4 +44,4 @@
     </div>
   </div>
 </section>
-
+ -->

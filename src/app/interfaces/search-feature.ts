@@ -1,8 +1,8 @@
 export interface SearchFeature {
     artists: Artists
     tracks: Tracks
-    album: Album
-    item: Item
+    albums: Album [] //need this to be another interface called Albums which will then contain an array of type Album because the json reads that this first layer is an object not an array.
+    item: Item 
   }
   
   export interface Artists {
