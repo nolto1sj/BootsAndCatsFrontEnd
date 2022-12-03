@@ -12,10 +12,10 @@
     </div>
   </div>
 </section>
-
-<pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE
+<!-- 
+<pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
 <!-- Album Information -->
-<div class="row" *ngFor="let album of albumResponse">
+<div class="row" *ngFor="let album of albumArray">
   <h2>{{album.name}}</h2>
 </div>
 <!-- <section>
