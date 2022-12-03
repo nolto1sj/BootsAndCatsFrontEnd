@@ -37,7 +37,7 @@ export class SpotifyService {
   headers = new HttpHeaders({
     "Content-Type": "application/json",
     "Accept" : "application/json",
-    "Authorization" : "Bearer BQD9_R_IdLWvN3TrNuQfPj2IJ7AveLpsnWPrsApHdHwIWYu8oqqNWcFinULOY7aYZkNkmchdlolgWsd0HVV0BjxTCokdBFTpnRNepXZhzYsQHL8EBuVSjwWsXmLWnCCDWm_RfQAtWEBp_LDBrvZOOHdPpiTTjdOcK1-ZHnUgmgGXm9yzzF-eK6TdmEu1dvh-fFrk_TjOibseZjeMAdnv2zVqILHh_AWdBUHDLBwoc47r6xCcsg-_0c140w", //this is where we will be pasting our token from postman for right now
+    "Authorization" : "Bearer BQBbut_d66ce6C4Ui8yLHEQx3hXC9UfZnSx81ZvdiF5yNl8yum70XMfSmWh-sBnPYoNJrBosP1be4cCWkyXgKpP6YXmELcvRuxHN3Oi9iTehSw8DCIqHB6gbDIugLVmaHTGBdWRGk01covn6N1hshVHDA2yjEmPmQmIi9H30CPKkbIS1oSHadzCLse_AAQTyXSJ-XxbrY2z8clG4V5OZ9W01C5LtIdttc9cFzSUrrKfEQ--ZMndrsnOMXA", //this is where we will be pasting our token from postman for right now
   });
 
   getAllAlbums(searchQuery: string): Observable<SearchFeature>{ //search feature that takes in an album name and returns a SearchFeature
