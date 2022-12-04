@@ -29,9 +29,14 @@ export class BootsAndCatsBackendService {
       return this.httpClient.delete<void>(this.backendURL + "/reviews/" + id);
     }
   
-    //do we need a list of users or just user info
-    getUserProfile = () => {
-      return this.httpClient.get<User>(this.backendURL + "/profile")
+    //get user by id
+    getUserProfile = (id: number): Observable<User> => {
+      return this.httpClient.get<User>(this.backendURL + "/Users/" + id);
+    }
+
+    //get all users
+    getAllUser = (): Observable<User[]> => {
+      return this.httpClient.get<User[]>(this.backendURL + "/Users/");
     }
   
     //Method to signup
