@@ -1,32 +1,70 @@
 
-<form (ngSubmit)="submit()" class="add-review-form">
-    <h2 class="add-review-heading">Add a Review</h2>
 
-    <p>
-      <label for="Rating">Rating:</label>
-      <input type="number"
-             name="rating"
-             id="rating"
-             [(ngModel)]="rating"
-             min="1"
-             max="5"
-             />
-             
-    </p>
-    <p>
-      <label for="ReviewContent">Comments:</label>
-      <input type="text"
-             name="ReviewContent"
-             id="ReviewContent"
-             [(ngModel)]="reviewContent" />
-    </p>
-    <p>
-      <label for="recommendation">Recommend:</label>
-      <input type="checkbox"
-             name="recommendation"
-             id="recommendation"
-             [(ngModel)]="recommendation" />
-    </p>
-    <button>Submit</button>
-  </form>
+<!-- Display album from search -->
+<!-- <app-search-filter-form *ngIf="searchAlbums()">
+  <div class="row" *ngFor="let album of searchAPIResponse.album" [albumR] = "album">
+    <h2>{{album.name}}</h2>
+  </div>
+</app-search-filter-form> -->
+
+
+
+<div class="review-album-card">
+  <header>ADD A REVIEW!</header>
+  <form (ngSubmit)="submit()"> 
+    <p></p>
+      <label for="rating">Rating (1-5): &nbsp;</label>
+      <input type="number" id="rating" name="rating" [(ngModel)]="rating"
+      min="1"
+      max="5">
+    <p></p>
+    <p></p>
+      <label for="reviewContent">Comments: &nbsp; </label>
+      <input type="text" id="reviewContent" name="reviewContent" [(ngModel)]="reviewContent" placeholder="TYPE YOUR COMMENTS HERE">
+    <p></p>
+    <p></p>
+    <p></p>
+      <label for="recommendation">Recommended: &nbsp;</label>
+      <input type="checkbox" id="recommendation" name="recommendation" [(ngModel)]="recommendation">
+  <p></p>
+  <input type="submit" value="Submit">
+</form>
+</div>
+  <p></p>
+  <p></p>
+
+<div>
+<button class="viewReviews-button" (click) = "toggleDisplay()">CLICK TO VIEW ALL REVIEWS!</button>
+</div>
+
+<!-- Display all reviews -->
+<section>
+  <div class="album-review-container" *ngIf="display" >
+    <p></p>
+    <table class="review-table">
+      <tr>
+        <th>Rating</th>
+        <th>Comments</th>
+        <th>Recommended?</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let review of reviews; index as i">
+        <td>{{ review.Rating }}</td>
+        <td>{{ review.ReviewContent }}</td>
+        <td>{{ review.Recommendation }}</td>
+        <td *ngIf="review.Recommendation">✓</td>
+        <td *ngIf="!review.Recommendation"></td>
+        <td>{{ review.DateSubmitted }}</td>
+        <td>
+          <button (click)="removeReview(review.Id!)">
+            <i class="fa-solid fa-trash-can" title="Delete"></i>
+          </button>
+        </td>
+      </tr>
+    </table>
+    <app-add-review-form (reviewSave)="addReview($event)"></app-add-review-form>
+  </div>
+</section>
+
 

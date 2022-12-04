@@ -14,19 +14,20 @@ export class BootsAndCatsBackendService {
   backendURL: string = 'https://localhost:7274/api';
 
   constructor(private httpClient: HttpClient) { }
+  
     //Method to get reviews
     getReviews = (): Observable<Review[]> => {
-      return this.httpClient.get<Review[]>(this.backendURL + "/reviews")
+      return this.httpClient.get<Review[]>(this.backendURL + "/review")
     }
   
     //Method to add a review
     addReview = (review: Review): Observable<Review> =>{
-      return this.httpClient.post<Review>(this.backendURL + "/reviews", review)
+      return this.httpClient.post<Review>(this.backendURL + "/review", review)
     }
   
     //Method to delete a review
     deleteReview = (id: number): Observable<void> => {
-      return this.httpClient.delete<void>(this.backendURL + "/reviews/" + id);
+      return this.httpClient.delete<void>(this.backendURL + "/review/" + id);
     }
   
     //do we need a list of users or just user info
