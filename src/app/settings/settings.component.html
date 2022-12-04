@@ -1,2 +1,61 @@
 <app-navbar></app-navbar>
-<p>settings works!</p>
+<div class="container">
+<button class="btn btn-secondary position-absolute top-50 start-0 translate-middle-y" (click)="showUser()">Change Username</button>
+
+<button class="btn btn-secondary position-absolute top-50 start-0 translate-middle-y mt-5" (click)="showPass()">Change Password</button>
+
+<button class="btn btn-secondary position-absolute top-50 start-0 translate-middle-y theme" (click)="themeChange()">Change To Light/Dark Mode</button>
+</div>
+
+
+<div class="container" [hidden]="userHidden">
+    <div class="row mt-5 ">
+        <div class="col-md-5 text-center mt-5 position-absolute top-50 start-50 translate-middle">
+            <div class="card px-5">
+                <div class="text-center">
+                    <h1 class="mb-3">Change Username</h1>
+                    <h6 class="mb-3">Please enter a new username and confirm the new username</h6>
+                </div>
+                <form>
+                    <div class="mb-3">
+                        <label for="UserName" class="form-label">New Username:</label>
+                        <input type="text" class="form-control" id="UserName" placeholder="Enter Username">
+                      </div>
+                      <div class="mb-3">
+                        <label for="userconfirm" class="form-label">Confirm New Username:</label>
+                        <input type="text" class="form-control" id="userconfirm" placeholder="Confirm username">
+                        <input class="mt-4 btn btn-warning" type="submit" value="Confirm Username Change">
+                        
+                      </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" [hidden]="passHidden">
+    <div class="row mt-5 ">
+        <div class="col-md-5 text-center mt-5 position-absolute top-50 start-50 translate-middle">
+            <div class="card px-5">
+                <div class="text-center">
+                    <h1 class="mb-3">Change Password</h1>
+                    <h6 class="mb-3">Please enter a new password and confirm the new password</h6>
+                </div>
+                <form>
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">New Password:</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Enter Username">
+                      </div>
+                      <div class="mb-3">
+                        <label for="PassConfirm" class="form-label">Confirm New Password:</label>
+                        <input type="password" class="form-control" id="PassConfirm" placeholder="Confirm username">
+                        <input class="mt-4 btn btn-warning" type="submit" value="Confirm Password Change">
+                        
+                      </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

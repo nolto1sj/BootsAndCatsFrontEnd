@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'review', component: AlbumReviewComponent },
   { path: 'aggregator', component: AggregatorComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: '', component: LoginComponent, pathMatch: 'full' }
+  { path: '', component: LoginComponent, pathMatch:"full"}
 ];
 
 
