@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
-<div class="login-card">
-    <header>LOGIN</header>
-    <!-- select user method needs review/proper naming-->
-    <form action="selectUser()"> 
+<!-- <div class="login-card">
+    <header>LOGIN</header> -->
+    <!-- select user method needs review/proper naming -->
+    <!-- <form action="selectUser()"> 
     <label for="uname">USERNAME : </label>
     <input type="text" id="uname" name="username" placeholder="ENTER USERNAME">
     <label for="pass">PASSWORD : </label>
@@ -12,4 +12,30 @@
 </div>
 <div>
     <button class="register-button"><a routerLink="signup">CLICK TO REGISTER!</a></button>
+</div> -->
+
+<div class="container">
+    <div class="row mt-5 ">
+        <div class="col-md-5 text-center mt-5 position-absolute top-50 start-50 translate-middle">
+            <div class="card px-5">
+                <div class="text-center">
+                    <h1 class="mb-3">Login</h1>
+                    <h6 class="mb-3">Please enter username and password</h6>
+                </div>
+                <form>
+                    <div class="mb-3">
+                        <label for="UserName" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="UserName" placeholder="Enter Username">
+                      </div>
+                      <div class="mb-3">
+                        <label for="Password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Enter Password">
+                        <input class="mt-4" type="submit" value="Login">
+                        <input type="submit" value="Sign Up" (click)="signUpRedirect()">
+                      </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
 </div>

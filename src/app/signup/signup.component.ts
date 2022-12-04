@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UrlSerializer } from '@angular/router';
 import { User } from '../interfaces/user';
 import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
 //   UserName: string = '';
 //   Password: string = '';
 
-  constructor(private service: BootsAndCatsBackendService) { }
+  constructor(private service: BootsAndCatsBackendService, private router: Router) { }
 newUser: User = {} as User;
 
   ngOnInit(): void {
@@ -53,8 +54,13 @@ newUser: User = {} as User;
 // }
 
 onSubmit(){
-  this.service.signup(this.newUser).subscribe();
+  this.service.signup(this.newUser)
+  .subscribe(
+    data => alert('Successfully signed up!'),
+    error => alert('Error with signing up!')
+  )
   
+  this.router.navigate(['/login']);
 }
 
 }
