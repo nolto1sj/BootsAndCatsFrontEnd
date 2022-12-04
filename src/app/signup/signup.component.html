@@ -2,18 +2,22 @@
 <div class="sign-up-card">
     <header>COMPLETE FORM TO SIGN UP!</header>
     <!-- add user method needs review/proper naming-->
-    <form #form="ngForm" (ngSubmit)="addUser($event)"> 
+    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate> 
+
+        {{form.value | json}}
+
+        {{newUser | json}}
     <label for="FirstName">First Name: </label>
-    <input type="text" id="FirstName" name="FirstName" placeholder="ENTER FIRST NAME" [ngModel]="FirstName">
+    <input type="text" id="FirstName" name="FirstName" placeholder="ENTER FIRST NAME" [(ngModel)]="newUser.FirstName">
 
     <label for="LastName">Last Name: </label>
-    <input type="text" id="LastName" name="LastName" placeholder="ENTER LAST NAME" [ngModel]="LastName">
+    <input type="text" id="LastName" name="LastName" placeholder="ENTER LAST NAME" [(ngModel)]="newUser.LastName">
 
     <label for="UserName">User Name: </label>
-    <input type="text" id="UserName" name="UserName" placeholder="ENTER USERNAME" [ngModel]="UserName">
+    <input type="text" id="UserName" name="UserName" placeholder="ENTER USERNAME" [(ngModel)]="newUser.UserName">
 
     <label for="Password">Password: </label>
-    <input type="password" id="Password" name="Password" placeholder="ENTER PASSWORD" [ngModel]="Password">
+    <input type="password" id="Password" name="Password" placeholder="ENTER PASSWORD" [(ngModel)]="newUser.Password">
 
     <input type="submit" value="Submit">
 </form>

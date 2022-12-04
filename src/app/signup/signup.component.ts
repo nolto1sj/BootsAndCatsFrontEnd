@@ -10,32 +10,32 @@ import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.s
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-@Output() userSave = new EventEmitter<User>();
+// @Output() userSave = new EventEmitter<User>();
 
 
-  FirstName: string ='';
-  LastName: string = '';
-  UserName: string = '';
-  Password: string = '';
+//   FirstName: string ='';
+//   LastName: string = '';
+//   UserName: string = '';
+//   Password: string = '';
 
   constructor(private service: BootsAndCatsBackendService) { }
-
+newUser: User = {} as User;
 
   ngOnInit(): void {
   }
 
-  submit = (): void => {
-    this.userSave.emit({
-      FirstName: this.FirstName,
-      LastName: this.LastName,
-      UserName: this.UserName,
-      Password: this.Password
-    });
-    this.FirstName = '';
-    this.LastName = '';
-    this.UserName = '';
-    this.Password = '';
-  };
+  // submit = (): void => {
+  //   this.userSave.emit({
+  //     FirstName: this.FirstName,
+  //     LastName: this.LastName,
+  //     UserName: this.UserName,
+  //     Password: this.Password
+  //   });
+  //   this.FirstName = '';
+  //   this.LastName = '';
+  //   this.UserName = '';
+  //   this.Password = '';
+  // };
 
   addUser = (user: User): void => {
     this.service.signup(user).subscribe();
@@ -51,5 +51,10 @@ export class SignupComponent implements OnInit {
 
 //   this.service.signup(newUser);
 // }
+
+onSubmit(){
+  this.service.signup(this.newUser).subscribe();
+  
+}
 
 }

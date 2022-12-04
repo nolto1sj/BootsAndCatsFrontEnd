@@ -11,7 +11,7 @@ import { Review } from '../interfaces/review';
 export class BootsAndCatsBackendService {
 
   //Each developer will have to modify per-swagger
-  backendURL: string = 'https://localhost:7274/api';
+  backendURL: string = 'http://localhost:5056/api';
 
   constructor(private httpClient: HttpClient) { }
     //Method to get reviews
@@ -36,6 +36,6 @@ export class BootsAndCatsBackendService {
   
     //Method to signup
     signup = (user: User): Observable<User> =>{
-      return this.httpClient.post<User>(this.backendURL + "/signup", user)
+      return this.httpClient.post<any>(this.backendURL + "/Users", user);
     }
 }
