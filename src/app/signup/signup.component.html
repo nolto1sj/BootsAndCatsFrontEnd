@@ -1,16 +1,60 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row mt-5">
+    <div
+      class="col-md-5 text-center mt-5 position-absolute top-50 start-50 translate-middle"
+    >
+      <div class="card px-5">
+        <div class="sign-up-card">
+          <header>COMPLETE FORM TO SIGN UP!</header>
+          <!-- add user method needs review/proper naming-->
+          <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- {{form.value | json}}
 
-<div class="sign-up-card">
-    <header>COMPLETE FORM TO SIGN UP!</header>
-    <!-- add user method needs review/proper naming-->
-    <form action="addUser()"> 
-    <label for="fname">First Name: </label>
-    <input type="text" id="fname" name="firstname" placeholder="ENTER FIRST NAME">
-    <label for="lname">Last Name: </label>
-    <input type="text" id="lname" name="lastname" placeholder="ENTER LAST NAME">
-    <label for="uname">User Name: </label>
-    <input type="text" id="uname" name="username" placeholder="ENTER USERNAME">
-    <label for="pass">Password: </label>
-    <input type="password" id="pass" name="password" placeholder="ENTER PASSWORD">
-    <input type="submit" value="Submit">
-</form>
+            {{newUser | json}} -->
+            <label for="FirstName">First Name: </label>
+            <input
+              type="text"
+              id="FirstName"
+              name="FirstName"
+              placeholder="ENTER FIRST NAME"
+              [(ngModel)]="newUser.FirstName"
+            />
+
+            <label for="LastName">Last Name: </label>
+            <input
+              type="text"
+              id="LastName"
+              name="LastName"
+              placeholder="ENTER LAST NAME"
+              [(ngModel)]="newUser.LastName"
+            />
+
+            <label for="UserName">User Name: </label>
+            <input
+              type="text"
+              id="UserName"
+              name="UserName"
+              placeholder="ENTER USERNAME"
+              [(ngModel)]="newUser.UserName"
+            />
+
+            <label for="Password">Password: </label>
+            <input
+              type="password"
+              id="Password"
+              name="Password"
+              placeholder="ENTER PASSWORD"
+              [(ngModel)]="newUser.Password"
+            />
+
+            <input type="submit" value="Submit" />
+          </form>
+          <a [routerLink]="['/login']"
+            >Already registered? Click here to login</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service'
+
 // import { Albums, Album, Item } from '../interfaces/album';
 import { SearchFeature, Albums, Item } from '../interfaces/search-feature';
 import { Observable } from 'rxjs';
@@ -12,6 +13,7 @@ import { Observable } from 'rxjs';
 export class SearchFilterFormComponent implements OnInit {
   searchQuery: string = '';
   searchAPIResponse: SearchFeature = {}  as SearchFeature;
+
   itemResponse: Albums = {} as Albums
   itemArray: Item[] = []
 

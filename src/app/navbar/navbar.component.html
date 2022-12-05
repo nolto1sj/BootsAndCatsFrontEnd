@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
+      <img src="assets/img/BootsAndCatsLogo.jpg" height="75">
       <a class="navbar-brand" href="#">Boots N' Cats</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,15 +8,15 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item px-2">
-            <a class="nav-link active" href="#">Reviews
+            <a class="nav-link active" [routerLink]="['/review']">Reviews
               <span class="visually-hidden">(current)</span>
             </a>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link" href="#">Artist/Genre Aggregator</a>
+            <a class="nav-link" [routerLink]="['/aggregator']">Artist/Genre Aggregator</a>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link" href="#">Settings</a>
+            <a class="nav-link" [routerLink]="['/settings']">Settings</a>
           </li>
         </ul>
       </div>

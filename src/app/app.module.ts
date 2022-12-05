@@ -15,6 +15,8 @@ import { AddReviewFormComponent } from './add-review-form/add-review-form.compon
 import { FormsModule } from '@angular/forms';
 import { SearchFilterFormComponent } from './search-filter-form/search-filter-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AggregatorComponent } from './aggregator/aggregator.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddReviewFormComponent,
     SearchFilterFormComponent,
     NavbarComponent,
+    AggregatorComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

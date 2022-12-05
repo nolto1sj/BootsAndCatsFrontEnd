@@ -38,6 +38,7 @@ export class SpotifyService {
     "Content-Type": "application/json",
     "Accept" : "application/json",
     "Authorization" : "Bearer BQDj1fhPfY8WFt_ztDcRxgGVl3BZDUmMyyIMgvSYsrarWpG7EkGZSjm7PODBVJEvvyn9TqCCFNlweaZKESFWr5CtYOUhG7Q8ZNdsA8_kcnpugJLcI4XgVrQvlnFd2UuT-zOjCumXeetDNY5bhHQmsawF-MXS06dQ2ecSHDJuZG8Z_V4lA15_IS6AFg-l5-5KvPcbX7YuqTprvtyoNh2rj22jhRVK45ILAQgUpiB5VrXda7HI_Rgt357nPg", //this is where we will be pasting our token from postman for right now
+
   });
 
   getAllAlbums(searchQuery: string): Observable<SearchFeature>{ //search feature that takes in an album name and returns a SearchFeature

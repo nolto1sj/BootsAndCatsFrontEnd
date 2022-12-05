@@ -11,7 +11,7 @@ import { Review } from '../interfaces/review';
 export class BootsAndCatsBackendService {
 
   //Each developer will have to modify per-swagger
-  backendURL: string = 'https://localhost:7274/api';
+  backendURL: string = 'http://localhost:5056/api';
 
   constructor(private httpClient: HttpClient) { }
     //Method to get reviews
@@ -29,13 +29,18 @@ export class BootsAndCatsBackendService {
       return this.httpClient.delete<void>(this.backendURL + "/reviews/" + id);
     }
   
-    //do we need a list of users or just user info
-    getUserProfile = () => {
-      return this.httpClient.get<User>(this.backendURL + "/profile")
+    //get user by id
+    getUserProfile = (id: number): Observable<User> => {
+      return this.httpClient.get<User>(this.backendURL + "/Users/" + id);
+    }
+
+    //get all users
+    getAllUser = (): Observable<User[]> => {
+      return this.httpClient.get<User[]>(this.backendURL + "/Users/");
     }
   
     //Method to signup
     signup = (user: User): Observable<User> =>{
-      return this.httpClient.post<User>(this.backendURL + "/signup", user)
+      return this.httpClient.post<any>(this.backendURL + "/Users", user);
     }
 }
