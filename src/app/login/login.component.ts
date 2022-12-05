@@ -17,9 +17,12 @@ export class LoginComponent implements OnInit {
 
   allUsers = this.service.getAllUser;
 
-  selectedUser: User = {} as User;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    (<HTMLLinkElement>document.getElementById("theme")).href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css"
+  }
+
+  selectedUser: User = {} as User;
 
   selectUser(userForm: User): void {
     for (let i = 0; i < this.allUsers.length; i++) {
