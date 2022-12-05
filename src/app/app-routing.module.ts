@@ -6,12 +6,14 @@ import { SignupComponent } from './signup/signup.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumReviewComponent } from './album-review/album-review.component';
 import { AddReviewFormComponent } from './add-review-form/add-review-form.component';
+import { SearchFilterFormComponent } from './search-filter-form/search-filter-form.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'albums', component: AlbumsComponent },
   { path: 'review', component: AddReviewFormComponent },
+  { path: 'search', component: SearchFilterFormComponent },
   { path: '', component: LoginComponent, pathMatch: 'full' },
 ];
 

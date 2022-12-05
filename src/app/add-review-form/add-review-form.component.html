@@ -36,7 +36,6 @@
 <div>
 <button class="viewReviews-button" (click) = "toggleDisplay()">CLICK TO VIEW ALL REVIEWS!</button>
 </div>
-
 <!-- Display all reviews -->
 <section>
   <div class="album-review-container" *ngIf="display" >
@@ -63,7 +62,7 @@
         </td>
       </tr>
     </table>
-    <app-add-review-form (reviewSave)="addReview($event)"></app-add-review-form>
+    <!-- <app-add-review-form (reviewSave)="addReview($event)"></app-add-review-form> -->
   </div>
 </section>
 
