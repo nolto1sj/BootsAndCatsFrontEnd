@@ -23,12 +23,9 @@ export class LoginComponent implements OnInit {
 
   selectUser(userForm: User): void {
     for (let i = 0; i < this.allUsers.length; i++) {
-      if (
-        userForm.UserName &&
-        userForm.Password == (this.allUsers as any)[i].UserName &&
-        (this.allUsers as any)[i].Password
-      ) {
-        userForm = this.selectedUser;
+      if (userForm.UserName && userForm.Password == (this.allUsers as any)[i].UserName && (this.allUsers as any)[i].Password)
+      {
+        (this.allUsers as any)[i] = this.selectedUser;
       }
     }
   }
