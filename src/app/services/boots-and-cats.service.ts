@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Albums } from '../interfaces/album';
-import { Album, SearchFeature } from '../interfaces/search-feature';
+import { SearchFeature } from '../interfaces/search-feature';
 
 @Injectable({
   providedIn: 'root'

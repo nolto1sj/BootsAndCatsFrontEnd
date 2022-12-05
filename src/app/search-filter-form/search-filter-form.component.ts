@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service'
-import { Album, SearchFeature } from '../interfaces/search-feature';
+
+// import { Albums, Album, Item } from '../interfaces/album';
+import { SearchFeature, Albums, Item } from '../interfaces/search-feature';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-filter-form',
@@ -9,8 +12,10 @@ import { Album, SearchFeature } from '../interfaces/search-feature';
 })
 export class SearchFilterFormComponent implements OnInit {
   searchQuery: string = '';
-  searchAPIResponse: SearchFeature = {} as SearchFeature;
+  searchAPIResponse: SearchFeature = {}  as SearchFeature;
 
+  itemResponse: Albums = {} as Albums
+  itemArray: Item[] = []
 
 constructor(private spotifyService: SpotifyService) { }
 
@@ -19,7 +24,8 @@ constructor(private spotifyService: SpotifyService) { }
 
   searchAlbums(){
   this.spotifyService.getAllAlbums(this.searchQuery).subscribe((data: SearchFeature) => {this.searchAPIResponse = data;})
+  this.itemResponse = this.searchAPIResponse.albums
+  this.itemArray = this.itemResponse.items
   }
- 
 }
  
