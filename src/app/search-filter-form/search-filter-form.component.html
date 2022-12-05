@@ -12,11 +12,15 @@
     </div>
   </div>
 </section>
-<!-- 
-<pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
+
+<!-- <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
 <!-- Album Information -->
-<div class="row" *ngFor="let album of albumArray">
-  <h2>{{album.name}}</h2>
+<div class="row" *ngFor="let item of itemArray">
+  <h2>{{item.name}}</h2>
+  <div class="row" *ngFor="let artist of item.artists">
+    <h4>{{artist.name}}</h4>
+    <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail" alt="">
+  </div>
 </div>
 <!-- <section>
   <div class="container">
