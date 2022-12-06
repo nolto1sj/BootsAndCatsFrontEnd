@@ -21,18 +21,23 @@
                 <div class="text-center">
                     <h1 class="mb-3">Log In</h1>
                     <h6 class="mb-3">Please enter username and password</h6>
+
+                    {{loginUser | json}}
                 </div>
-                <form>
+                <form #form="ngForm" (ngSubmit)="selectUser(loginUser)">
                     <div class="mb-3">
                         <label for="UserName" class="form-label">Username:</label>
-                        <input type="text" class="form-control" id="UserName" placeholder="Enter Username">
+                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter Username" [(ngModel)]="loginUser.UserName">
                       </div>
                       <div class="mb-3">
                         <label for="Password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="Password" placeholder="Enter Password">
+                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password" [(ngModel)]="loginUser.Password">
                         <input class="mt-4" type="submit" value="Log In">
+                    </div>
+                      </form>
+                      <form>
                         <input type="submit" value="Sign Up" (click)="signUpRedirect()">
-                      </div>
+                      
                 </form>
                 
             </div>

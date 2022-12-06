@@ -35,10 +35,12 @@ export class BootsAndCatsBackendService {
     }
 
     //get all users
-    getAllUser = (): Observable<User[]> => {
-      return this.httpClient.get<User[]>(this.backendURL + "/Users/");
+    getAllUser(): Observable<User[]>  {
+      return this.httpClient.get<User[]>(this.backendURL + "/Users/users");
     }
   
+
+
     //Method to signup
     signup = (user: User): Observable<User> =>{
       return this.httpClient.post<any>(this.backendURL + "/Users", user);

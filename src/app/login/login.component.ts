@@ -10,25 +10,43 @@ import { User } from '../interfaces/user';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+loginUser: User = {} as User;
+allUsers: User[] = [];
+
   constructor(
     private router: Router,
     private service: BootsAndCatsBackendService
   ) {}
 
-  allUsers = this.service.getAllUser;
+  
 
 
   ngOnInit(): void {
-    (<HTMLLinkElement>document.getElementById("theme")).href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css"
+    (<HTMLLinkElement>document.getElementById("theme")).href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css";
+    this.service.getAllUser().subscribe((data: User[]) => {this.allUsers = data});
   }
 
   selectedUser: User = {} as User;
 
   selectUser(userForm: User): void {
-    for (let i = 0; i < this.allUsers.length; i++) {
-      if (userForm.UserName && userForm.Password == (this.allUsers as any)[i].UserName && (this.allUsers as any)[i].Password)
+    console.log(userForm);
+    
+    console.log(this.allUsers.length);
+    
+
+    for (let i = 0; i < this.allUsers.length; i++) { 
+      // if (userForm.UserName && userForm.Password == this.allUsers[i].UserName && this.allUsers[i].Password)
+      if (userForm.UserName === this.allUsers[i].UserName)
       {
-        (this.allUsers as any)[i] = this.selectedUser;
+        this.selectedUser = this.allUsers[i];
+        this.router.navigate(['/review']);
+        console.log(this.selectedUser.FirstName);
+        
+      }
+      else {
+        alert("Username or password not correct!");
+        console.log(this.selectedUser.FirstName);
+        break;
       }
     }
   }
