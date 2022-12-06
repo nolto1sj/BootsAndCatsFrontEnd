@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Review } from '../interfaces/review';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-add-review-form',
@@ -13,7 +14,8 @@ export class AddReviewFormComponent implements OnInit {
   recommendation: boolean = false;
   tag: string = '';
   // dateSubmitted: Date = this.dateSubmitted.getDate();
-  
+
+
   constructor() { }
 
   ngOnInit(): void {
