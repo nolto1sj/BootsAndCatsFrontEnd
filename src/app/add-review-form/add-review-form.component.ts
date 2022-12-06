@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Review } from '../interfaces/review';
+import { LoginComponent } from '../login/login.component';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
 
 @Component({
   selector: 'app-add-review-form',
@@ -13,8 +15,10 @@ export class AddReviewFormComponent implements OnInit {
   recommendation: boolean = false;
   tag: string = '';
   // dateSubmitted: Date = this.dateSubmitted.getDate();
-  
-  constructor() { }
+
+loginUser = this.frontEndService.loginUser;
+
+  constructor(private frontEndService: BootsAndCatsService) { }
 
   ngOnInit(): void {
   }

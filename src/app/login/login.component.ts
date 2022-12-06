@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
 import { User } from '../interfaces/user';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,13 @@ import { User } from '../interfaces/user';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginUser: User = {} as User;
+  loginUser = this.frontEndService.loginUser;
   allUsers: User[] = [];
 
   constructor(
     private router: Router,
-    private service: BootsAndCatsBackendService
+    private service: BootsAndCatsBackendService,
+    private frontEndService: BootsAndCatsService
   ) {}
 
   ngOnInit(): void {
