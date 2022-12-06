@@ -13,4 +13,14 @@ loginUser: User = {} as User;
 
 // dependency injection
   constructor(private httpClient: HttpClient) { }
+
+
+  setUser = (userInput: User): void => {
+    this.loginUser = userInput;
+  }
+  
+
+
+  
 }
+
