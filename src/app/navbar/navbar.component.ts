@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private frontEndService: BootsAndCatsService) { }
+
+  hideNavBar: any;
 
   ngOnInit(): void {
+    this.hideNavBar = this.frontEndService.hideNavBar()
+    console.log(this.hideNavBar);
   }
 
 }
