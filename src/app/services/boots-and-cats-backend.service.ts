@@ -35,7 +35,7 @@ export class BootsAndCatsBackendService {
     }
 
     //get all users
-    getAllUser(): Observable<User[]>  {
+    getAllUser = (): Observable<User[]> => {
       return this.httpClient.get<User[]>(this.backendURL + "/Users/users");
     }
   
