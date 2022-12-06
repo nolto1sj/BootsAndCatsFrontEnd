@@ -11,7 +11,7 @@ import { BootsAndCatsService } from '../services/boots-and-cats.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginUser = this.frontEndService.loginUser;
+  loginUser: User = {} as User
   allUsers: User[] = [];
 
   constructor(
@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
         this.selectedUser = user;
         this.router.navigate(['/review']);
         console.log(this.selectedUser.firstName);
+        this.frontEndService.setUser(this.selectedUser)
         break;
       } 
     }
