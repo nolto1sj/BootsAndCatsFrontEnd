@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'review', component: SearchFilterFormComponent },
-  { path: 'albums/:id', component: AddReviewFormComponent },
+  { path: 'review/add', component: AddReviewFormComponent },
   { path: 'review/all', component: AlbumReviewComponent },
   { path: 'aggregator', component: AggregatorComponent },
   { path: 'settings', component: SettingsComponent },

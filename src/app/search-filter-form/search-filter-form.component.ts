@@ -30,7 +30,7 @@ constructor(private spotifyService: SpotifyService, private router: Router) { }
   }
 
   reviewRedirect(): void {
-    this.router.navigate(['albums/:id']);
+    this.router.navigate(['review/add']);
   }
 }
  

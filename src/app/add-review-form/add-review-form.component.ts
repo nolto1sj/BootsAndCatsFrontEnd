@@ -37,7 +37,7 @@ export class AddReviewFormComponent implements OnInit {
     this.recommendation = false;
   };
 
-  // viewReviewsRedirect(): void {
-  //   this.router.navigate(['review/all']);
-  // }
+  viewReviewsRedirect(): void {
+    this.router.navigate(['review/all']);
+  }
 }
