@@ -1,0 +1,23 @@
+.review-table {
+
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .review-table td, #products th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* .review-table tr:nth-child(even){background-color: #f2f2f2;} */
+  
+  /* .review-table tr:hover {background-color: #ddd;} */
+  
+  .review-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /* background-color: black;
+    color: green; */
+    /* font-family: unset; */
+  }

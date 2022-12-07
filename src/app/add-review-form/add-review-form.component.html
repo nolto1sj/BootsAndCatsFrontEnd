@@ -1,31 +1,48 @@
-<form (ngSubmit)="submit()" class="add-review-form">
-    <h2 class="add-review-heading">Add a Review</h2>
+<div class="container">
+  <div class="row mt-5">
+    <div
+      class="col-md-5 text-center mt-5 position-absolute top-50 start-50 translate-middle"
+    >
+      <div class="card px-5">
+        <div class="add-review-card">
+          <header>COMPLETE FORM TO REVIEW THIS ALBUM!</header>
+          <form #form="ngForm" (ngSubmit)="submit()">
+            <label for="Rating">RATING: </label>
+            <input
+              type="number"
+              id="rating"
+              name="rating"
+              [(ngModel)]="rating"
+	            min="1"
+              max="5"
+            />
 
-    <p>
-      <label for="Rating">Rating:</label>
-      <input type="number"
-             name="rating"
-             id="rating"
-             [(ngModel)]="rating"
-             min="1"
-             max="5"
-             />
-             
-    </p>
-    <p>
-      <label for="ReviewContent">Comments:</label>
-      <input type="text"
-             name="ReviewContent"
-             id="ReviewContent"
-             [(ngModel)]="reviewContent" />
-    </p>
-    <p>
-      <label for="recommendation">Recommend:</label>
-      <input type="checkbox"
-             name="recommendation"
-             id="recommendation"
-             [(ngModel)]="recommendation" />
-    </p>
-    <button>Submit</button>
-  </form>
+            <label for="reviewContent">COMMENTS: </label>
+            <input
+              type="text"
+              id="reviewContent"
+              name="reviewContent"
+              placeholder="ENTER COMMENTS"
+              [(ngModel)]="reviewContent"
+            />
+
+            <label for="recommendation">RECOMMEND?:&nbsp; </label>
+            <input
+              type="checkbox"
+              id="recommendation"
+              name="recommendation"
+              placeholder="recommendation"
+              [(ngModel)]="recommendation"
+            />
+            <input type="submit" value="Submit" />
+          </form>
+          <form>
+            <input type="submit" value="Previous Reviews" (click)="viewReviewsRedirect()">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 

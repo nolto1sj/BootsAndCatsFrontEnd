@@ -9,9 +9,9 @@
         <form style="margin:auto;max-width:500px">
           <div class="form-group">
             <span>
-              <input [(ngModel)]="searchQuery" name="query" placeholder="Search Albums..."
-              type="search" class="form-control">
-             <input class="mt-4" type="submit" value="Submit" (click)="searchAlbums()" >
+              <input [(ngModel)]="searchQuery" name="query" placeholder="Search Albums..." type="search"
+                class="form-control">
+              <input class="mt-4" type="submit" value="Submit" (click)="searchAlbums()">
             </span>
 
           </div>
@@ -27,9 +27,13 @@
 <div class="row" *ngFor="let item of itemArray">
   <h2>{{item.name}}</h2>
   <div class="row" *ngFor="let artist of item.artists">
-    <h4>{{artist.name}}</h4>
+    <h4>
+      {{artist.name}}
+    </h4>
     <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail" alt="">
   </div>
+  <input type="submit" value="Review" (click)="reviewRedirect()">
+</div>
 
 
 

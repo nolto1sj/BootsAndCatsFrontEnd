@@ -1,0 +1,58 @@
+header{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 18px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+  }
+  input[type=checkbox], select {
+    padding: 10px 0px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit], select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  input[type=number], select{
+    width: 15%;
+    padding: 12px 20px;
+    margin: 8px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-right: 400px;
+    margin-left: 10px;
+  }
+
+  
+  .add-review-card{
+    margin-top: 20px;
+    margin-bottom: 60px;
+}

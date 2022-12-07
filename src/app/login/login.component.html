@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <!-- <div class="login-card">
     <header>LOGIN</header> -->
-    <!-- select user method needs review/proper naming -->
-    <!-- <form action="selectUser()"> 
+<!-- select user method needs review/proper naming -->
+<!-- <form action="selectUser()"> 
     <label for="uname">USERNAME : </label>
     <input type="text" id="uname" name="username" placeholder="ENTER USERNAME">
     <label for="pass">PASSWORD : </label>
@@ -27,19 +27,20 @@
                 <form #form="ngForm" (ngSubmit)="selectUser(loginUser)" novalidate>
                     <div class="mb-3">
                         <label for="UserName" class="form-label">Username:</label>
-                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter Username" [(ngModel)]="loginUser.userName">
-                      </div>
-                      <div class="mb-3">
+                        <input type="text" class="form-control" id="UserName" name="UserName"
+                            placeholder="Enter Username" [(ngModel)]="loginUser.userName">
+                    </div>
+                    <div class="mb-3">
                         <label for="Password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password" [(ngModel)]="loginUser.password">
+                        <input type="password" class="form-control" id="Password" name="Password"
+                            placeholder="Enter Password" [(ngModel)]="loginUser.password">
                         <input class="mt-4" type="submit" value="Log In">
                     </div>
-                      </form>
-                      <form>
-                        <input type="submit" value="Sign Up" (click)="signUpRedirect()">
-                      
                 </form>
-                
+                <form>
+                    <input type="submit" value="Sign Up" (click)="signUpRedirect()">
+                </form>
+
             </div>
         </div>
     </div>
