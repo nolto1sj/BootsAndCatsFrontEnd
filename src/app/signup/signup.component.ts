@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
 //   Password: string = '';
 
   constructor(private service: BootsAndCatsBackendService, private router: Router) { }
-newUser: User = {} as User;
+  newUser: User = {} as User;
 
   ngOnInit(): void {
   }

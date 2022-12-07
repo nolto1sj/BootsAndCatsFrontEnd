@@ -20,15 +20,9 @@
   <div class="row" *ngFor="let artist of item.artists">
     <h4>{{artist.name}}</h4>
     <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail" alt="">
-    <form #form="ngForm" (ngSubmit)="captureId(reviewItemId)" novalidate>
-      <label for="albumId">Review</label>
-      <input [routerLink]="['/review']"
-        type="button"
-        id="albumId"
-        name="albumId"
-        [(ngModel)]="reviewItemId"
-      />
-      </form>
+
+      <button (click)="captureId(item.id)" [routerLink]="['/review']">Review</button>
+
   </div>
 </div>
 

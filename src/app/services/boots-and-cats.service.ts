@@ -19,7 +19,7 @@ loginUser: User = {} as User;
     this.loginUser = userInput;
   }
   
- hideNavBar = (): boolean => {
+  hideNavBar = (): boolean => {
   console.log("entered hidnavbar");
   console.log(this.loginUser.userName);
     if (this.loginUser.userName == null){

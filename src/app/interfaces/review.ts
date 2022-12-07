@@ -1,9 +1,10 @@
 export interface Review {
-    Id?: number,
-    UserId?: number,
-    Rating: number,
-    ReviewContent: string,
-    Recommendation: boolean,
-    Tag: string,
-    DateSubmitted?: Date,
+    id?: number,
+    userId?: number,
+    albumId: string;
+    rating: number,
+    reviewContent: string,
+    recommendation: boolean,
+    tag: string,
+    dateSubmitted?: Date,
 }

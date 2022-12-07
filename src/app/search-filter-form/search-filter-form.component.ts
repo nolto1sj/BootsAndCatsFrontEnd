@@ -31,7 +31,7 @@ constructor(private spotifyService: SpotifyService) { }
   }
 
   captureId(itemId: string){
-    
+    this.spotifyService.currentAlbumId = itemId;
   }
 }
  
