@@ -1,2 +1,26 @@
 <app-navbar></app-navbar>
-<p>aggregator works!</p>
+<section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <form>
+            <div class="form-group">
+                <!-- <pre>{{artistAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
+              <input [(ngModel)]="artistSearch"for="artistSearch" name="artistSearch" placeholder="Search Artist..." type="text" (keyup)="searchForArtist()" class="form-control">
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="row" *ngFor="let item of artistArray">
+    <h2>{{item.name}}</h2>
+    <button (click)="captureId(item.id)">Generate Artist Web</button>
+    <div class="row" *ngFor="let artist of relatedArtistArray">
+      <h3>{{artist.name}}</h3>
+    </div>
+  </div>
+ 
+  

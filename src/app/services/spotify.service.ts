@@ -3,6 +3,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SearchFeature } from '../interfaces/search-feature';
+import { SearchArtist } from '../interfaces/search-artist';
+import { RelatedArtists } from '../interfaces/related-artists';
 
 
 @Injectable({
@@ -16,6 +18,7 @@ export class SpotifyService {
   clientInfo: string = window.btoa(this.client_id + ':' + this.client_secret)
 
   currentAlbumId: string = ''
+  currentArtistId: string = ''
 
   getToken = async () => {
       console.log("function entered");
@@ -39,18 +42,29 @@ export class SpotifyService {
   headers = new HttpHeaders({
     "Content-Type": "application/json",
     "Accept" : "application/json",
-    "Authorization" : "Bearer BQDupHpUsornamweQmFcOtxf-KtI5-1dTXi9cFrlqhjwnUbtPUF37Q6qqfWhnUYv3OMFtw3mGgln5vWBmIKe9qgBjw_s0_vMfUBRHBppptpqiq9vJiz4JnV8mKLf_YSurfshcQXalwoqiZ7kVItv-7OIfQwlkEHuY6eqqWXF3AigUUoyh_asGte0X5gNSSmZOSJ4g2G9plODHHdjsYkK4-8QFJiqFPmJ6xJMRp8XFI1gpkvY5MGjlUeypQ", //this is where we will be pasting our token from postman for right now
+    "Authorization" : "Bearer BQDWK4P99mYTmARsxteQ8SVESlnMQItjtCHAFgJvIUKpe79Lc1EMl8gNRKUAAQnGimn79UYc63o4x08lJ4cW9KSueprYo-fR9FoSNuE37w6ihqfLFnehFOvmjm4EdL_MNPT4CfVRQ2HRQBvDqzy_0y-86k0sdoja93GZjMtPpkXIaPem-Q51k0cwWfKhxO2ZJ_J9JSsZcJPzAn8QO85OLmMfWDTLIC2NEl5yM_Ubr6BcgQFf9x4xvPMY4g", //this is where we will be pasting our token from postman for right now
 
   });
 
   getAllAlbums(searchQuery: string): Observable<SearchFeature>{ //search feature that takes in an album name and returns a SearchFeature
-    const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10&offset=5`;
+    const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10`;
 
     console.log(albumURL);
     console.log(this.headers);
     
     return this.httpClient.get<SearchFeature>(albumURL, {headers: this.headers});
   }
+
+  searchArtists(searchQuery: string): Observable<SearchArtist>{ //search feature that takes in an artist name and returns a SearchArtist
+    const artistURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=artist&market=US&limit=1`;
+    return this.httpClient.get<SearchArtist>(artistURL, {headers: this.headers});
+  }
+
+  getRelatedArtists(): Observable<RelatedArtists>{
+    const relatedArtistURL = `https://api.spotify.com/v1/artists/${this.currentArtistId}/related-artists`;
+    return this.httpClient.get<RelatedArtists>(relatedArtistURL, {headers: this.headers})
+  }
+  
   
   // //Method to get albums
   // displayAlbums(): Observable<Albums>{

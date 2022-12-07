@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user';
+import { SpotifyService } from './spotify.service';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class BootsAndCatsService {
 loginUser: User = {} as User;
 
 // dependency injection
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private spotifyService: SpotifyService) { }
 
 
   setUser = (userInput: User): void => {
@@ -28,6 +29,8 @@ loginUser: User = {} as User;
       return false
     }
   }
+
+  
 
   
 }
