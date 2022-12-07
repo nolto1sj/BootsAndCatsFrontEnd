@@ -1,11 +1,19 @@
 <!-- Search for album -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<h1>SEARCH FOR AN ALBUM TO REVIEW</h1>
+
 <section class="">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <form>
+        <form style="margin:auto;max-width:500px">
           <div class="form-group">
-            <input [(ngModel)]="searchQuery" name="query" placeholder="Search Album..." (keyup)="searchAlbums()" type="search" class="form-control">
+            <span>
+              <input [(ngModel)]="searchQuery" name="query" placeholder="Search Albums..."
+              type="search" class="form-control">
+             <input class="mt-4" type="submit" value="Submit" (click)="searchAlbums()" >
+            </span>
+
           </div>
         </form>
       </div>
@@ -14,6 +22,7 @@
 </section>
 
 <!-- <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
+
 <!-- Album Information -->
 <div class="row" *ngFor="let item of itemArray">
   <h2>{{item.name}}</h2>
@@ -21,25 +30,28 @@
     <h4>{{artist.name}}</h4>
     <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail" alt="">
   </div>
-</div>
+
+
+
+
 <!-- <section>
   <div class="container">
-    <div class="row" *ngFor="let item in searchAPIResponse">
+    <div class="row" *ngFor="let item in itemArray">
       <div class="col">
         <div class="card mt-3">
           <div class="card-header bg-primary text-white">
-            <h2>{{item.album.name}}</h2>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-3">
-                <img [src]="item.album.images[0]" class="img-fluid img-thumbnail" alt="">
-                <div class="col-md-9">
-                  <h4 class="display-3 text-primary">{{item.album.artists}}</h4>
-                  <p class="h2">Release Date: {{item.album.release_date}}</p>
-                  <p class="h5">Genre: {{item.album.genres}}</p>
-                  <p class="h5">Tracks: {{item.album.total_tracks}}</p>
+            <h2>{{item.name}}</h2>
+            <div class="card-body">
+              <div class="row" *ngFor="let artist of item.artists>
+                <div class="col-md-3">
+                  <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail" alt="">
                 </div>
+                <div class="col-md-9">
+                  <h4 class="display-3 text-primary">{{artist.name}}</h4>
+                  <p class="h2">Release Date: {{item.release_date}}</p>
+                  <p class="h5">Tracks: {{item.total_tracks}}</p>
+                </div>
+              </div>
               </div>
             </div>
           </div>
@@ -47,5 +59,4 @@
       </div>
     </div>
   </div>
-</section>
- -->
+</section> -->

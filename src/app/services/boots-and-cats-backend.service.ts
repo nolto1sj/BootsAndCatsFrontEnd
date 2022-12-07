@@ -11,7 +11,7 @@ import { Review } from '../interfaces/review';
 export class BootsAndCatsBackendService {
 
   //Each developer will have to modify per-swagger
-  backendURL: string = 'http://localhost:5056/api';
+  backendURL: string = 'http://localhost:7274/api';
 
   constructor(private httpClient: HttpClient) { }
     //Method to get reviews

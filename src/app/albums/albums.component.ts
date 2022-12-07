@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Albums } from '../interfaces/album';
-import { BootsAndCatsService } from '../services/boots-and-cats.service';
+import { SpotifyService } from '../services/spotify.service';
 
 @Component({
   selector: 'app-albums',
@@ -12,7 +11,7 @@ export class AlbumsComponent implements OnInit {
 //new property
   albums: Albums = {} as Albums;
 
-  constructor(private bootsAndCatsService: BootsAndCatsService) { }
+  constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit(): void {
     // this.bootsAndCatsService.displayAlbums().subscribe((response: Albums) => {this.albums = response;})
