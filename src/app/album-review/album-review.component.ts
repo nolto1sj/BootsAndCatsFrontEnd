@@ -29,6 +29,8 @@ export class AlbumReviewComponent implements OnInit {
 
   //Method to add review and load reviews afterwards
   addReview = (review: Review): void => {
+    console.log("fired review");
+    
     this.service.addReview(review).subscribe(() => this.loadReviews());
   }
 

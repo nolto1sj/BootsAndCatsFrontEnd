@@ -21,7 +21,7 @@ export class BootsAndCatsBackendService {
   
     //Method to add a review
     addReview = (review: Review): Observable<Review> =>{
-      return this.httpClient.post<Review>(this.backendURL + "/reviews", review)
+      return this.httpClient.post<Review>(this.backendURL + "/reviews/add", review)
     }
   
     //Method to delete a review
@@ -39,8 +39,6 @@ export class BootsAndCatsBackendService {
       return this.httpClient.get<User[]>(this.backendURL + "/Users/users");
     }
   
-
-
     //Method to signup
     signup = (user: User): Observable<User> =>{
       return this.httpClient.post<any>(this.backendURL + "/Users", user);

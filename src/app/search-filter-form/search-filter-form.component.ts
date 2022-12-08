@@ -17,6 +17,8 @@ export class SearchFilterFormComponent implements OnInit {
   itemResponse: Albums = {} as Albums
   itemArray: Item[] = []
 
+  reviewItemId: string = ""
+
 constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,10 @@ constructor(private spotifyService: SpotifyService) { }
   this.spotifyService.getAllAlbums(this.searchQuery).subscribe((data: SearchFeature) => {this.searchAPIResponse = data;})
   this.itemResponse = this.searchAPIResponse.albums
   this.itemArray = this.itemResponse.items
+  }
+
+  captureId(itemId: string){
+    this.spotifyService.currentAlbumId = itemId;
   }
 }
  

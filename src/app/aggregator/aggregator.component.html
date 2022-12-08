@@ -1,2 +1,15 @@
 <app-navbar></app-navbar>
-<p>aggregator works!</p>
+<form>
+  <div class="form-group">
+    <input [(ngModel)]="artistSearch" for="artistSearch" name="artistSearch" placeholder="Search Artist..." type="text" (keyup)="searchForArtist()" class="form-control search-bar"/>
+  </div>
+</form>
+
+<div class="grid-container" *ngFor="let item of artistArray">
+  <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail"/>  <h2>{{ item.name }}</h2>
+  <button (click)="captureId(item.id)" class="btn btn-info">Generate Artist Web</button>
+  <div class="grid-item" *ngFor="let artist of relatedArtistArray">
+    <h3>{{ artist.name }}</h3>
+    <a href={{artist.external_urls.spotify}}><img id="artist-image"[src]="artist.images[0].url" class="img-fluid img-thumbnail search-thumbnail"/></a>
+  </div>
+</div>

@@ -7,7 +7,7 @@
       <input type="number"
              name="rating"
              id="rating"
-             [(ngModel)]="rating"
+             [(ngModel)]="formRating"
              min="1"
              max="5"
              />
@@ -18,14 +18,14 @@
       <input type="text"
              name="ReviewContent"
              id="ReviewContent"
-             [(ngModel)]="reviewContent" />
+             [(ngModel)]="formReviewContent" />
     </p>
     <p>
       <label for="recommendation">Recommend:</label>
       <input type="checkbox"
              name="recommendation"
              id="recommendation"
-             [(ngModel)]="recommendation" />
+             [(ngModel)]="formRecommendation" />
     </p>
     <button>Submit</button>
   </form>

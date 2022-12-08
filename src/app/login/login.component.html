@@ -20,9 +20,6 @@
             <div class="card px-5">
                 <div class="text-center">
                     <h1 class="mb-3">Log In</h1>
-                    <h6 class="mb-3">Please enter username and password</h6>
-
-                    {{loginUser | json}}
                 </div>
                 <form #form="ngForm" (ngSubmit)="selectUser(loginUser)" novalidate>
                     <div class="mb-3">
