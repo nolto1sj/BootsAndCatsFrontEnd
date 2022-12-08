@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
         break;
       } 
     }
-    if(!this.selectedUser){
-      alert('Username or password not correct!');
+    if(userForm.userName == null || userForm.password == null){
+      alert('Please enter username and password');
     }
   }
 
