@@ -49,10 +49,18 @@ export class LoginComponent implements OnInit {
         this.frontEndService.setUser(this.selectedUser)
         break;
       } 
+      else if (userForm.userName == '' || userForm.password == '' || userForm.userName == null || userForm.password == null) {
+          alert('Please enter both username and password');
+          break;
+      }
+      else {
+        alert('User not found :(')
+        break;
+      }
+      
+      
     }
-    if(userForm.userName == null || userForm.password == null){
-      alert('Please enter username and password');
-    }
+    
   }
 
   signUpRedirect(): void {

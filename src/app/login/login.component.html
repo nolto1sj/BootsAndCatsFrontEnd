@@ -21,14 +21,14 @@
                 <div class="text-center">
                     <h1 class="mb-3">Log In</h1>
                 </div>
-                <form #form="ngForm" (ngSubmit)="selectUser(loginUser)" novalidate>
+                <form class="was-validated" #form="ngForm" (ngSubmit)="selectUser(loginUser)" novalidate>
                     <div class="mb-3">
-                        <label for="UserName" class="form-label">Username:</label>
-                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter Username" [(ngModel)]="loginUser.userName">
+                        <label for="UserName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter Username" [(ngModel)]="loginUser.userName" required>
                       </div>
                       <div class="mb-3">
                         <label for="Password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password" [(ngModel)]="loginUser.password">
+                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password" [(ngModel)]="loginUser.password" required>
                         <input class="mt-4" type="submit" value="Log In">
                     </div>
                       </form>
@@ -40,3 +40,4 @@
         </div>
     </div>
 </div>
+
