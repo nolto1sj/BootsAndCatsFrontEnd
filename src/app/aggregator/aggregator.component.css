@@ -1,0 +1,45 @@
+.search-thumbnail{
+    height: 200px;
+    width: 200px;
+}
+
+button{
+    display:block;
+    width:200px;
+    height:200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    margin-left: 3rem;
+    padding: 2rem;
+}
+.container{
+    width: 100%;
+    text-align:center;
+}
+    
+
+.form-control{
+    width: 30%;
+    text-align:center;
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: block;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #0c4a88;
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: rgba(15, 1, 1, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #artist-image{
+    border-radius: 50%;
+  }

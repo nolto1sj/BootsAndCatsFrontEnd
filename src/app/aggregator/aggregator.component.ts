@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RelatedArtists } from '../interfaces/related-artists';
+import { RelatedArtists, Artist } from '../interfaces/related-artists';
 import { SearchArtist, Item } from '../interfaces/search-artist';
-import { Artist } from '../interfaces/search-feature';
 import { SpotifyService } from '../services/spotify.service';
 
 @Component({
