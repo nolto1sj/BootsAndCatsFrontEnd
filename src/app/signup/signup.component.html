@@ -8,45 +8,45 @@
         <div class="sign-up-card">
           <header>COMPLETE FORM TO SIGN UP!</header>
           <!-- add user method needs review/proper naming-->
-          <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <form class="was-validated" #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
             <!-- {{form.value | json}}
 
             {{newUser | json}} -->
-            <label for="FirstName">First Name: </label>
-            <input
+            <label class="form-label" for="FirstName">First Name: </label>
+            <input class="form-control"
               type="text"
               id="FirstName"
               name="FirstName"
               placeholder="ENTER FIRST NAME"
               [(ngModel)]="newUser.firstName"
-            />
+              required/>
 
-            <label for="LastName">Last Name: </label>
-            <input
+            <label class="form-label" for="LastName">Last Name: </label>
+            <input class="form-control"
               type="text"
               id="LastName"
               name="LastName"
               placeholder="ENTER LAST NAME"
               [(ngModel)]="newUser.lastName"
-            />
+              required/>
 
             <label for="UserName">User Name: </label>
-            <input
+            <input class="form-control"
               type="text"
               id="UserName"
               name="UserName"
               placeholder="ENTER USERNAME"
               [(ngModel)]="newUser.userName"
-            />
+              required/>
 
-            <label for="Password">Password: </label>
-            <input
+            <label class="form-label" for="Password">Password: </label>
+            <input class="form-control"
               type="password"
               id="Password"
               name="Password"
               placeholder="ENTER PASSWORD"
               [(ngModel)]="newUser.password"
-            />
+              required/>
 
             <input type="submit" value="Submit" />
           </form>

@@ -57,8 +57,6 @@ export class LoginComponent implements OnInit {
         alert('User not found :(')
         break;
       }
-      
-      
     }
     
   }
