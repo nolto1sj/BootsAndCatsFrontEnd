@@ -25,42 +25,22 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // submit = (): void => {
-  //   this.userSave.emit({
-  //     FirstName: this.FirstName,
-  //     LastName: this.LastName,
-  //     UserName: this.UserName,
-  //     Password: this.Password
-  //   });
-  //   this.FirstName = '';
-  //   this.LastName = '';
-  //   this.UserName = '';
-  //   this.Password = '';
-  // };
-
   addUser = (user: User): void => {
     this.service.signup(user).subscribe();
   }
 
-// addUser(formParam: NgForm): void {
-//   let newUser: User = {
-//     FirstName: formParam.form.value.fname,
-//     LastName: formParam.form.value.lname,
-//     UserName: formParam.form.value.uname,
-//     Password: formParam.form.value.pass
-//   }
-
-//   this.service.signup(newUser);
-// }
-
 onSubmit(){
-  this.service.signup(this.newUser)
-  .subscribe(
-    data => alert('Successfully signed up!'),
-    error => alert('Error with signing up!')
-  )
-  
-  this.router.navigate(['/login']);
+  if(!this.newUser.firstName || !this.newUser.lastName || !this.newUser.userName || !this.newUser.password) {
+    alert("Please fill out all fields to create a user")
+  } else {
+    this.service.signup(this.newUser)
+    .subscribe(
+      data => alert('Successfully signed up!'),
+      error => alert('Error with signing up!')
+    )
+    
+    this.router.navigate(['/login']);
+  }
 }
 
 }
