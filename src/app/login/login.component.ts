@@ -31,14 +31,7 @@ export class LoginComponent implements OnInit {
   selectedUser: User = {} as User;
 
   selectUser(userForm: User): void {
-    // console.log(userForm);
-
-    // console.log(this.allUsers.length);
-    // console.log(this.allUsers[0])
-
     for (let user of this.allUsers) {
-      console.log(user);
-
       if (
         userForm.userName === user.userName &&
         userForm.password === user.password
@@ -49,16 +42,22 @@ export class LoginComponent implements OnInit {
         this.frontEndService.setUser(this.selectedUser)
         break;
       } 
+      else if (userForm.userName === user.userName || userForm.password === user.password){
+        alert("Username or password is incorrect");
+        break;
+      }
       else if (userForm.userName == '' || userForm.password == '' || userForm.userName == null || userForm.password == null) {
           alert('Please enter both username and password');
           break;
       }
       else {
-        alert('User not found :(')
+        if (!this.selectedUser.userName) {
+          alert("User does not exist")
+          break;
+        }
         break;
       }
     }
-    
   }
 
   signUpRedirect(): void {
