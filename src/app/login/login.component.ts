@@ -11,8 +11,9 @@ import { BootsAndCatsService } from '../services/boots-and-cats.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginUser: User = {} as User
   allUsers: User[] = [];
+  loginUser: User = {} as User;
+  blankUser: User = {} as User;
 
   constructor(
     private router: Router,
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.frontEndService.loginUser = this.blankUser;
     (<HTMLLinkElement>document.getElementById('theme')).href =
       'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css';
     this.service.getAllUser().subscribe((data: User[]) => {
@@ -31,7 +33,11 @@ export class LoginComponent implements OnInit {
   selectedUser: User = {} as User;
 
   selectUser(userForm: User): void {
+    console.log(userForm);
+    
     for (let user of this.allUsers) {
+      console.log(user);
+      
       if (
         userForm.userName === user.userName &&
         userForm.password === user.password
@@ -50,13 +56,14 @@ export class LoginComponent implements OnInit {
           alert('Please enter both username and password');
           break;
       }
-      else {
-        if (!this.selectedUser.userName) {
-          alert("User does not exist")
-          break;
-        }
-        break;
-      }
+      else {}
+      // else {
+      //   if (!this.selectedUser.userName) {
+      //     alert("User does not exist")
+      //     break;
+      //   }
+      //   break;
+      
     }
   }
 
