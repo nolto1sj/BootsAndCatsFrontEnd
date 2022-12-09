@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Review } from '../interfaces/review';
 import { LoginComponent } from '../login/login.component';
+import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
 import { BootsAndCatsService } from '../services/boots-and-cats.service';
 import { SpotifyService } from '../services/spotify.service';
 
@@ -10,7 +12,7 @@ import { SpotifyService } from '../services/spotify.service';
   styleUrls: ['./add-review-form.component.css']
 })
 export class AddReviewFormComponent implements OnInit {
-  @Output() reviewSave = new EventEmitter<Review>();
+  
   formReview: Review = {} as Review
   formRating: number = 1;
   formReviewContent: string = '';
@@ -19,10 +21,17 @@ export class AddReviewFormComponent implements OnInit {
 
   loginUser = this.frontEndService.loginUser;
 
-  constructor(private frontEndService: BootsAndCatsService, private spotifyService: SpotifyService) { }
+  constructor(private frontEndService: BootsAndCatsService, private spotifyService: SpotifyService, private backendService: BootsAndCatsBackendService, private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  addReview = (review: Review): void => {
+    console.log("fired review");
+    
+    this.backendService.addReview(review).subscribe();
+  }
+
 
   submit = (): void => {
     this.formReview.rating = this.formRating;
@@ -34,12 +43,14 @@ export class AddReviewFormComponent implements OnInit {
 
     console.log(this.formReview);
     
-    this.reviewSave.emit(this.formReview);
-
-    this.formRating = 1;
-    this.formReviewContent = '';
-    this.formRecommendation = false;
+    this.addReview(this.formReview)
+    this.router.navigate(['/review']);
+    // this.formRating = 1;
+    // this.formReviewContent = '';
+    // this.formRecommendation = false;
   };
+
+
 
 
 }
