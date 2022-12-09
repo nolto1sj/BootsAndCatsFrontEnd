@@ -33,35 +33,39 @@ export class LoginComponent implements OnInit {
   selectedUser: User = {} as User;
 
   selectUser(userForm: User): void {
-    console.log(userForm);
-    if (this.allUsers.find(el => el.userName == userForm.userName && el.password == userForm.password)){
-      
-
-      for (let user of this.allUsers) {
-        if (userForm.userName === user.userName && userForm.password === user.password ) {
-          this.selectedUser = user;
-          this.router.navigate(['/review']);
-          console.log(this.selectedUser.firstName);
-          this.frontEndService.setUser(this.selectedUser)
-          console.log("fired1");
-          break;
-        } 
-        else if (userForm.userName == '' || userForm.password == '' || userForm.userName == null || userForm.password == null) {
-          alert('Please enter both username and password');
-          console.log("fired2");
-          break;
+    for (let user of this.allUsers) {
+      if (
+        userForm.userName === user.userName &&
+        userForm.password === user.password
+      ) {
+        this.selectedUser = user;
+        this.router.navigate(['/review']);
+        console.log(this.selectedUser.firstName);
+        this.frontEndService.setUser(this.selectedUser)
+        console.log("fired1");
+        break;
+      } 
+      else if (userForm.userName == '' || userForm.password == '' || userForm.userName == null || userForm.password == null) {
+        alert('Please enter both username and password');
+        console.log("fired2");
+        break;
+    }
+      else if (userForm.userName === user.userName && userForm.password !== user.password){
+        console.log("fired3");
+        alert("User password is incorrect");
+        break;
       }
-        else if (userForm.userName === user.userName && userForm.password !== user.password){
-          console.log("fired3");
-          alert("User password is incorrect");
-          break;
-        }
-        else {continue}
+      else if (this.allUsers.find(el => el.userName && el.password)) {
+        console.log("fired4");
+        continue;
       }
-
-
-    } else {
-      alert("User not found")
+      else if (!this.allUsers.find(el => el.userName && el.password)) {
+        console.log("fired5");
+        
+        alert("User password is incorrect");
+        break;
+      }
+      else {continue}
     }
   }
 
