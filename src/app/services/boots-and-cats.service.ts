@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { SpotifyService } from './spotify.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,11 +14,20 @@ export class BootsAndCatsService {
 loginUser: User = {} as User;
 
 // dependency injection
-  constructor(private httpClient: HttpClient, private spotifyService: SpotifyService) { }
+  constructor(private httpClient: HttpClient, 
+    private spotifyService: SpotifyService,
+    private router: Router) { }
 
 
   setUser = (userInput: User): void => {
     this.loginUser = userInput;
+  }
+
+  logOut = (): void => {
+    this.loginUser = {} as User;
+    this.router.navigate(['/login']);
+    console.log(this.loginUser);
+    
   }
   
   hideNavBar = (): boolean => {

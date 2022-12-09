@@ -8,7 +8,7 @@ import { BootsAndCatsService } from '../services/boots-and-cats.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private frontEndService: BootsAndCatsService) { }
+  constructor(public frontEndService: BootsAndCatsService) { }
 
   hideNavBar: any;
 
