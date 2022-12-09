@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Albums } from '../interfaces/album';
 import { Review } from '../interfaces/review';
 import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-album-review',
@@ -11,7 +13,10 @@ import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.s
 export class AlbumReviewComponent implements OnInit {
   reviews: Review[] = [];
 
-  constructor(private service: BootsAndCatsBackendService) { }
+  constructor(private service: BootsAndCatsBackendService,
+    public frontEndService: BootsAndCatsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadReviews();
@@ -34,7 +39,12 @@ export class AlbumReviewComponent implements OnInit {
     this.service.addReview(review).subscribe(() => this.loadReviews());
   }
 
+  addReviewRedirect(): void {
+    this.router.navigate(['/albums']);
+  }
 }
+
+
 
 
 

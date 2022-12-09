@@ -53,10 +53,10 @@ export class LoginComponent implements OnInit {
           alert('Please enter both username and password');
           break;
       }
-      else {
-        alert('User not found :(')
-        break;
-      }
+      // else {
+      //   alert('User not found :(')
+      //   break;
+      // }
       
       
     }
