@@ -40,7 +40,6 @@ export class AggregatorComponent implements OnInit {
       this.spotifyService.getRelatedArtists().subscribe((data: RelatedArtists) => (this.relatedArists = data));
       this.relatedArtistArray = this.relatedArists.artists;
       console.log("populated");
-      
     }
 
     
