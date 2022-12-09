@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { Review } from '../interfaces/review';
 import { BootsAndCatsService } from './boots-and-cats.service';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -23,21 +21,15 @@ export class BootsAndCatsBackendService {
     return this.httpClient.get<Review[]>(this.backendURL + '/reviews');
   };
 
-<<<<<<< Updated upstream
-    //get all users
-    getAllUser = (): Observable<User[]> => {
-      return this.httpClient.get<User[]>(this.backendURL + "/Users/users");
-    }
-  
-    //Method to signup
-    signup = (user: User): Observable<User> =>{
-      return this.httpClient.post<any>(this.backendURL + "/Users", user);
-    }
+  //get all users
+  getAllUser = (): Observable<User[]> => {
+    return this.httpClient.get<User[]>(this.backendURL + '/Users/users');
+  };
 
-
-  }
-
-=======
+  //Method to signup
+  signup = (user: User): Observable<User> => {
+    return this.httpClient.post<any>(this.backendURL + '/Users', user);
+  };
   //Method to add a review
   addReview = (review: Review): Observable<Review> => {
     return this.httpClient.post<Review>(
@@ -56,16 +48,6 @@ export class BootsAndCatsBackendService {
     return this.httpClient.get<User>(this.backendURL + '/Users/' + id);
   };
 
-  //get all users
-  getAllUser = (): Observable<User[]> => {
-    return this.httpClient.get<User[]>(this.backendURL + '/Users/users');
-  };
-
-  //Method to signup
-  signup = (user: User): Observable<User> => {
-    return this.httpClient.post<any>(this.backendURL + '/Users', user);
-  };
-
   UpdateByUserName = (user: User): Observable<User> => {
     return this.httpClient.put<any>(this.backendURL + '/Users', user);
   };
@@ -76,12 +58,4 @@ export class BootsAndCatsBackendService {
       user
     );
   };
-
-  UpdatePass = (user: User): Observable<void> => {
-    return this.httpClient.put<void>(
-      this.backendURL + '/Users/changepass',
-      user
-    );
-  };
 }
->>>>>>> Stashed changes
