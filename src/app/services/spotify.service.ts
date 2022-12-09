@@ -42,7 +42,7 @@ export class SpotifyService {
   headers = new HttpHeaders({
     "Content-Type": "application/json",
     "Accept" : "application/json",
-    "Authorization" : "Bearer BQD9Xi33RJTxP4egycNY_69Yu_CeTlc69z5JienYkTvQx4jqhUe4LX3bfdcF2NwFAKF_RrsgeHM6uv61BRCVToP11qtgObtIoCQ0Tl5vZ7kkSQfLGmX4c_Bj_YFKOO4zbLKQcjhIDbp6ZusR16k423nHedhu-T3PqeLOOgnLApAVNlYlOLnXZNLVDp3NU-K2090k6w3oJwEfY0mPXNiBcuiaZknb_ZZ9VExtuAJrIkOkybMESopnJWm-WA", //this is where we will be pasting our token from postman for right now
+    "Authorization" : "Bearer BQAQUFQwYMoklIuqspBoR5uuSGl87kB7OR59ljlag7iqNZQcjFUagh4mmrOEas64O0r6CW5BOacULnFJqN1Nzz5Twv29y2y75Wh-QhmfMFIIcSZn12QCFjOKndvqbeHX8dCfCzn-RTdjWN1OraJRgC6Ss4eAxMdiSkq9Ft4TIOiqTqF8j5MFPAdBFQ__HE8jH46wcORQ5-mhdwVsKifKGy7oEq5hRIjmWzwA7DDoZbT275H2dJLkEOfGjg", //this is where we will be pasting our token from postman for right now
 
   });
 
