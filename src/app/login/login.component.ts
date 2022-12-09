@@ -56,14 +56,11 @@ export class LoginComponent implements OnInit {
           alert('Please enter both username and password');
           break;
       }
+      else if (userForm.userName !== user.userName && userForm.password !== user.password){
+        alert("User does not exist");
+        break;
+      }
       else {}
-      // else {
-      //   if (!this.selectedUser.userName) {
-      //     alert("User does not exist")
-      //     break;
-      //   }
-      //   break;
-      
     }
   }
 
