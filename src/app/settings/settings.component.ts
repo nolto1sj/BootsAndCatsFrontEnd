@@ -3,6 +3,7 @@ import { delay } from 'rxjs';
 import { User } from '../interfaces/user';
 import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
 import { BootsAndCatsService } from '../services/boots-and-cats.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -19,7 +20,8 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private backEndService: BootsAndCatsBackendService,
-    private frontEndService: BootsAndCatsService
+    private frontEndService: BootsAndCatsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -69,6 +71,7 @@ export class SettingsComponent implements OnInit {
     } else {
       if (confirm('Are you sure you want to change your username?') == true) {
         this.backEndService.UpdateUser(userForm).subscribe();
+        this.router.navigate(['/albums']);
       }
     }
   }
@@ -79,6 +82,7 @@ export class SettingsComponent implements OnInit {
     } else {
       if (confirm('Are you sure you want to change your password?') == true) {
         this.backEndService.UpdateUser(userForm).subscribe();
+        this.router.navigate(['/albums']);
       }
     }
   }

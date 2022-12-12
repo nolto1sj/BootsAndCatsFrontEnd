@@ -1,58 +1,32 @@
 <!-- Search for album -->
-<section class="">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <form>
-          <div class="form-group">
-            <input [(ngModel)]="searchQuery" name="query" placeholder="Search Album..." (keyup)="searchAlbums()" type="search" class="form-control">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+
+<div class="form-group">
+  <input
+    [(ngModel)]="searchQuery"
+    name="query"
+    placeholder="Search Album..."
+    (keyup)="searchAlbums()"
+    type="search"
+    class="form-control"
+  />
+</div>
 
 <!-- <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
 <!-- Album Information -->
-<div class="row" *ngFor="let item of itemArray">
-  <h2>{{item.name}}</h2>
-  <div class="row" *ngFor="let artist of item.artists">
-    <h4>{{artist.name}}</h4>
-    <img [src]="item.images[0].url" class="img-fluid img-thumbnail search-thumbnail" alt="">
 
-      <button (click)="captureId(item.id)" [routerLink]="['/review-form']">Review</button>
-
+<div class="card" *ngFor="let item of itemArray">
+  <img class="card-img-top"
+  [src]="item.images[0].url"
+  class="img-fluid img-thumbnail search-thumbnail"
+  alt=""
+/>
+  <h2>{{ item.name }}</h2>
+ 
+  <div *ngFor="let artist of item.artists">
+    <h4>{{ artist.name }}</h4>
+    
+    <button (click)="captureId(item.id)" [routerLink]="['/review-form']">
+      Review
+    </button>
   </div>
 </div>
-
-
-
-
-<!-- <section>
-  <div class="container">
-    <div class="row" *ngFor="let item in searchAPIResponse">
-      <div class="col">
-        <div class="card mt-3">
-          <div class="card-header bg-primary text-white">
-            <h2>{{item.album.name}}</h2>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-3">
-                <img [src]="item.album.images[0]" class="img-fluid img-thumbnail" alt="">
-                <div class="col-md-9">
-                  <h4 class="display-3 text-primary">{{item.album.artists}}</h4>
-                  <p class="h2">Release Date: {{item.album.release_date}}</p>
-                  <p class="h5">Genre: {{item.album.genres}}</p>
-                  <p class="h5">Tracks: {{item.album.total_tracks}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- -->

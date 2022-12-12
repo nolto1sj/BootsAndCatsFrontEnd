@@ -20,8 +20,7 @@ export class SpotifyService {
   currentAlbumId: string = ''
   currentArtistId: string = ''
 
-  getToken = async () => {
-      console.log("function entered");
+  getToken = async (): Promise<string> => {
       const result = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
@@ -32,113 +31,46 @@ export class SpotifyService {
       });
       
       const data = await result.json();
-      console.log("we even got here");
       console.log(data.access_token);
+      console.log(data);
+      
       return data.access_token;
   }
 
-  TOKEN = this.getToken()
-
-  headers = new HttpHeaders({
-    "Content-Type": "application/json",
-    "Accept" : "application/json",
-    "Authorization" : "Bearer BQCSCrm0hp4tDVXpHh5bBTLYV9-R9mk0ypvoimMS24eyvQPVlVwyCJL4f4hxSCH5-dQrYZ1Qyx-WhoyudcBKH7dU3vPe31v4jwIjxqmWEcD7RnpJDvazqVAxwvhymuRKWzxQs_6N45bzDitdAgEEm9lnIfiFaqUqPaHx1ZzjpdK5BNPd8ZA", //this is where we will be pasting our token from postman for right now
-
-  });
-
-  getAllAlbums(searchQuery: string): Observable<SearchFeature>{ //search feature that takes in an album name and returns a SearchFeature
+  async getAllAlbums(searchQuery: string): Promise<Observable<SearchFeature>>{ //search feature that takes in an album name and returns a SearchFeature
     const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10`;
 
     console.log(albumURL);
-    console.log(this.headers);
-    
-    return this.httpClient.get<SearchFeature>(albumURL, {headers: this.headers});
+  
+    var headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept" : "application/json",
+      "Authorization" : `Bearer ${await this.getToken()}` , //this is where we will be pasting our token from postman for right now
+    })
+  
+    console.log(headers);
+    return this.httpClient.get<SearchFeature>(albumURL, {headers: headers});
+
   }
 
-  searchArtists(searchQuery: string): Observable<SearchArtist>{ //search feature that takes in an artist name and returns a SearchArtist
+  async searchArtists(searchQuery: string): Promise<Observable<SearchArtist>>{ //search feature that takes in an artist name and returns a SearchArtist
+    var headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept" : "application/json",
+      "Authorization" : `Bearer ${await this.getToken()}` , //this is where we will be pasting our token from postman for right now
+    })
+
     const artistURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=artist&market=US&limit=1`;
-    return this.httpClient.get<SearchArtist>(artistURL, {headers: this.headers});
+    return this.httpClient.get<SearchArtist>(artistURL, {headers: headers});
   }
 
-  getRelatedArtists(): Observable<RelatedArtists>{
+  async getRelatedArtists(): Promise<Observable<RelatedArtists>>{
+    var headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept" : "application/json",
+      "Authorization" : `Bearer ${await this.getToken()}` , //this is where we will be pasting our token from postman for right now
+    })
     const relatedArtistURL = `https://api.spotify.com/v1/artists/${this.currentArtistId}/related-artists`;
-    return this.httpClient.get<RelatedArtists>(relatedArtistURL, {headers: this.headers})
+    return this.httpClient.get<RelatedArtists>(relatedArtistURL, {headers: headers})
   }
-  
-  
-  // //Method to get albums
-  // displayAlbums(): Observable<Albums>{
-  //   const albumURL = 'https://api.spotify.com/v1/albums?limit=10&offset=5'
-  //   // Not sure if this is the correct link. Added a limit of 10
-  //     return this.httpClient.get<Albums>(albumURL, this.headers);
-  //   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  // redirect_uri: string = "https://localhost:4200/index.html"; // change this your value
-  // client_id: string = "59a2dea8cf794f3494f77b182096c100"; 
-  // client_secret: string = "29e6648865d948c0b884599dcf6ca6f1";
-
-  // authOptions = {
-  //   url: 'https://accounts.spotify.com/api/token',
-  //   headers: {
-  //     'Authorization': 'Basic ' + (new Buffer(this.client_id + ':' + 
-  //     this.client_secret).toString('base64'))
-  //   },
-  //   form: {
-  //     grant_type: 'client_credentials'
-  //   },
-  //   json: true
-  // };
-
-  //   request = (this.authOptions, function(error: string, response: string, body: string): Observable<string> {
-      
-  //   })
-  // request.post(this.authOptions, function(error, response, body) {
-  //   if (!error && response.statusCode == 200)  {
-  //     var token = body.access_token;
-  //   }
-  // });
-
-
-
-
-
-
-
-
-
-
-
-  
-  // authHeader: HttpHeaders = new HttpHeaders().set('Authorization','')
-  // access_token: string = "";
-  // refresh_token: string = "";
-  // currentPlaylist: string = "";
-  // radioButtons = [];
-  
-  
-

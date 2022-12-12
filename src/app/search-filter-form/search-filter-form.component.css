@@ -3,3 +3,16 @@
     width: 200px;
 }
 
+
+.form-control{
+    width: 30%;
+    text-align:center;
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: block;
+}
+
+.container{
+    width: 100%;
+    text-align:center;
+}

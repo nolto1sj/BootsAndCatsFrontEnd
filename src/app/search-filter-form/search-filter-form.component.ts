@@ -22,10 +22,11 @@ export class SearchFilterFormComponent implements OnInit {
 constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit(): void {
+    
   }
 
-  searchAlbums(){
-  this.spotifyService.getAllAlbums(this.searchQuery).subscribe((data: SearchFeature) => {this.searchAPIResponse = data;})
+  async searchAlbums(){
+  (await this.spotifyService.getAllAlbums(this.searchQuery)).subscribe((data: SearchFeature) => {this.searchAPIResponse = data;})
   this.itemResponse = this.searchAPIResponse.albums
   this.itemArray = this.itemResponse.items
   }
