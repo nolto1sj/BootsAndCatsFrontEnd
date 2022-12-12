@@ -1,4 +1,11 @@
 <!-- Search for album -->
+<div id="flavor-text" class="text-center">
+  <h4>Welcome to Boots N' Cats!</h4>
+  <h5>
+    On this page, one can search an album in Spotify's database and choose to
+    write a review about it. Give it a whirl!
+  </h5>
+</div>
 
 <div class="form-group">
   <input
@@ -13,20 +20,20 @@
 
 <!-- <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
 <!-- Album Information -->
+<div>
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let item of itemArray">
+      <div class="card border-primary mb-3" style="max-width: 70%; display:flexbox; justify-content:space-between;">
 
-<div class="card" *ngFor="let item of itemArray">
-  <img class="card-img-top"
-  [src]="item.images[0].url"
-  class="img-fluid img-thumbnail search-thumbnail"
-  alt=""
-/>
-  <h2>{{ item.name }}</h2>
- 
-  <div *ngFor="let artist of item.artists">
-    <h4>{{ artist.name }}</h4>
-    
-    <button (click)="captureId(item.id)" [routerLink]="['/review-form']">
-      Review
-    </button>
+        <img [src]="item.images[0].url" alt="" />
+        <h2 id="card-text">{{ item.name }}</h2>
+        <div *ngFor="let artist of item.artists">
+          <h4 id="card-text">{{ artist.name }}</h4>
+        </div>
+        <button (click)="captureId(item.id)" [routerLink]="['/review-form']">
+          Review
+        </button>
+      </div>
+    </div>
   </div>
 </div>

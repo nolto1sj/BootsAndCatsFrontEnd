@@ -43,3 +43,16 @@ button{
   #artist-image{
     border-radius: 50%;
   }
+
+  h1,h2,h3,h4 {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#flavor-text{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}

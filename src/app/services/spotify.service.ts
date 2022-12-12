@@ -38,7 +38,7 @@ export class SpotifyService {
   }
 
   async getAllAlbums(searchQuery: string): Promise<Observable<SearchFeature>>{ //search feature that takes in an album name and returns a SearchFeature
-    const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=10`;
+    const albumURL = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&market=US&limit=24`;
 
     console.log(albumURL);
   

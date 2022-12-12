@@ -1,4 +1,12 @@
 <app-navbar></app-navbar>
+
+<div id="flavor-text" class="text-center">
+  <h4>Artist Aggregator</h4>
+  <h5>
+    On this page, one can search an artist in Spotify's database and the aggregator will generate a web of new artists to listen based on the one entered. <br> Click on the artist image to check out their Spotify page!
+  </h5>
+</div>
+
 <form>
   <div class="form-group">
     <input [(ngModel)]="artistSearch" for="artistSearch" name="artistSearch" placeholder="Search Artist..." type="text" (keyup)="searchForArtist()" class="form-control search-bar"/>

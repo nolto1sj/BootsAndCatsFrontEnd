@@ -1,18 +1,46 @@
+h1,h2,h3,h4 {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
 .search-thumbnail{
     height: 200px;
     width: 200px;
 }
 
+#flavor-text{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+.card {
+    box-shadow: 0 10px 40px 0 rgb(0, 0, 0);
+}
+
+.form-group{
+    margin-bottom: 2%;
+}
 
 .form-control{
     width: 30%;
     text-align:center;
     margin: 0 auto;
     margin-top: 2rem;
-    display: block;
 }
 
-.container{
-    width: 100%;
-    text-align:center;
-}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+  }
+  .grid-item {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+
