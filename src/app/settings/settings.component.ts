@@ -1,49 +1,85 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs';
+import { User } from '../interfaces/user';
+import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
   userHidden: boolean = true;
   passHidden: boolean = true;
   theme: boolean = true;
-  constructor() { }
+  loginUser: User = this.frontEndService.loginUser;
+  confirmUser: string = '';
+  confirmPass: string = '';
 
-  ngOnInit(): void {
-    
+  constructor(
+    private backEndService: BootsAndCatsBackendService,
+    private frontEndService: BootsAndCatsService
+  ) {}
+
+  ngOnInit(): void {}
+
+  showUser(): void {
+    this.userHidden = false;
+    this.passHidden = true;
   }
 
-showUser(): void {
-  this.userHidden = false;
-  this.passHidden= true;
-}
+  showPass(): void {
+    this.userHidden = true;
+    this.passHidden = false;
+  }
 
-showPass(): void {
-  this.userHidden = true;
-  this.passHidden= false;
-}
+  themeChange(): void {
+    this.userHidden = true;
+    this.passHidden = true;
 
-themeChange(): void {
-
-  this.userHidden = true;
-  this.passHidden= true;
-
-
-  if (this.theme == true){
-    if (confirm("Are you sure you want to hurt your eyes? \(Switch to light mode\)") == true){
+    if (this.theme == true) {
+      if (
+        confirm(
+          'Are you sure you want to hurt your eyes? (Switch to light mode)'
+        ) == true
+      ) {
         this.theme = false;
-        (<HTMLLinkElement>document.getElementById("theme")).href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/cerulean/bootstrap.min.css"
-        
-    }
-  } else if (this.theme == false) {
-    if(confirm("Are you sure you want to switch to dark mode? \(Your eyes will thank you\)") == true){
-      this.theme = true;
-      (<HTMLLinkElement>document.getElementById("theme")).href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css"
+        (<HTMLLinkElement>document.getElementById('theme')).href =
+          'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/cerulean/bootstrap.min.css';
+      }
+    } else if (this.theme == false) {
+      if (
+        confirm(
+          'Are you sure you want to switch to dark mode? (Your eyes will thank you)'
+        ) == true
+      ) {
+        this.theme = true;
+        (<HTMLLinkElement>document.getElementById('theme')).href =
+          'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css';
+      }
     }
   }
-}
 
+  UpdateUser(userForm: User): void {
+    if (userForm.userName != this.confirmUser) {
+      alert("New username and confirm username aren't the same!");
+      console.log(this.confirmUser)
+      console.log(userForm)
+    } else {
+      if (confirm('Are you sure you want to change your username?') == true) {
+        this.backEndService.UpdateUser(userForm).subscribe();
+      }
+    }
+  }
+
+  UpdatePass(userForm: User): void {
+    if (userForm.password != this.confirmPass) {
+      alert("New password and confirm password aren't the same!");
+    } else {
+      if (confirm('Are you sure you want to change your password?') == true) {
+        this.backEndService.UpdateUser(userForm).subscribe();
+      }
+    }
+  }
 }
