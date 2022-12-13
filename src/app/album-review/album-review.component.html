@@ -1,59 +1,64 @@
 <!-- <p>album-review works!</p> -->
 <app-navbar></app-navbar>
 <style>
-    .review-table {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    .review-table td, #products th {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    
-    .review-table tr:nth-child(even){background-color: #f2f2f2;}
-    
-    .review-table tr:hover {background-color: #ddd;}
-    
-    .review-table th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: black;
-      color: green;
-      font-family: unset;
-    }
+  .review-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .review-table td,
+  #products th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .review-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .review-table tr:hover {
+    background-color: #ddd;
+  }
+
+  .review-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: green;
+    font-family: unset;
+  }
 </style>
 <div class="album-review-container">
-    <!-- <app-filter-form (filterUpdate)="changeFilter($event)"></app-filter-form> -->
-
-    <p></p>
-    <table class="table table-striped table-dark table-hover">
-      <tbody>
-        <tr>
-          <th>Rating</th>
-          <th>Comments</th>
-          <th>Recommended</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let review of reviews; index as i">
-          <td>{{ review.rating }}</td>
-          <td>{{ review.reviewContent }}</td>
-          <!-- <td>{{ review.recommendation }}</td> -->
-          <td *ngIf="review.recommendation">✓</td>
-          <td *ngIf="!review.recommendation"></td>
-          <td>{{ review.dateSubmitted }}</td>
-          <td>
-            <div *ngIf="this.frontEndService.loginUser.id == this.review.userId">
-              <button class="btn btn-dark" (click)="removeReview(review.id!)">Delete</button>
+  <p></p>
+  <table class="table table-striped table-dark table-hover">
+    <tbody>
+      <tr>
+        <th>Username</th>
+        <th>Album Name</th>
+        <th>Rating</th>
+        <th>Comments</th>
+        <th>Recommended</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let review of reviews; index as i">
+        <td>{{userArray[findIndex(review)].userName}}</td>
+        <td *ngFor="let album of albumArray">{{album.name}}</td>
+        <td>{{ review.rating }}</td>
+        <td>{{ review.reviewContent }}</td>
+        <td *ngIf="review.recommendation">✓</td>
+        <td *ngIf="!review.recommendation"></td>
+        <td>{{ review.dateSubmitted }}</td>
+        <td>
+          <div *ngIf="this.frontEndService.loginUser.id == this.review.userId">
+            <button class="btn btn-dark" (click)="removeReview(review.id!)">
+              Delete
+            </button>
           </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-   
-  </div>
-
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
