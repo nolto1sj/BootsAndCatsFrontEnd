@@ -1,6 +1,7 @@
+<app-navbar></app-navbar>
 <!-- Search for album -->
 <div id="flavor-text" class="text-center">
-  <h4>Welcome to Boots N' Cats!</h4>
+  <h4>Welcome to Boots N' Cats, {{loginUser.firstName}}!</h4>
   <h5>
     On this page, one can search an album in Spotify's database and choose to
     write a review about it. Give it a whirl!
@@ -8,14 +9,8 @@
 </div>
 
 <div class="form-group">
-  <input
-    [(ngModel)]="searchQuery"
-    name="query"
-    placeholder="Search Album..."
-    (keyup)="searchAlbums()"
-    type="search"
-    class="form-control"
-  />
+  <input [(ngModel)]="searchQuery" name="query" placeholder="Search Album..." (keyup)="searchAlbums()" type="search"
+    class="form-control" />
 </div>
 
 <!-- <pre>{{searchAPIResponse | json}}</pre> UNCOMMENT THIS TO TEST API RESPONSE -->
@@ -30,10 +25,56 @@
         <div *ngFor="let artist of item.artists">
           <h4 id="card-text">{{ artist.name }}</h4>
         </div>
-        <button (click)="captureId(item.id)" [routerLink]="['/review-form']">
+
+        <!-- Button to trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="captureId(item.id)">
           Review
         </button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add a review</h1>
+          <div class="modal-body">
+            <form (ngSubmit)="submit()">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="Rating">Rating:</label>
+                    <input type="number" name="rating" id="rating" [(ngModel)]="formRating" min="1" max="5" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="ReviewContent">Comments:</label>
+                    <input type="text" name="ReviewContent" id="ReviewContent" [(ngModel)]="formReviewContent" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="recommendation">Recommend:</label>
+                    <input type="checkbox" name="recommendation" id="recommendation" [(ngModel)]="formRecommendation" />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" [routerLink]="['/review']">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+

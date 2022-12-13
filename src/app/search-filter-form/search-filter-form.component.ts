@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service'
-
-// import { Albums, Album, Item } from '../interfaces/album';
 import { SearchFeature, Albums, Item } from '../interfaces/search-feature';
-import { Observable } from 'rxjs';
+import { Review } from '../interfaces/review';
+import { BootsAndCatsService } from '../services/boots-and-cats.service';
+import { BootsAndCatsBackendService } from '../services/boots-and-cats-backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-filter-form',
@@ -19,7 +20,15 @@ export class SearchFilterFormComponent implements OnInit {
 
   reviewItemId: string = ""
 
-constructor(private spotifyService: SpotifyService) { }
+  formReview: Review = {} as Review
+  formRating: number = 1;
+  formReviewContent: string = '';
+  formRecommendation: boolean = false;
+  formTag: string = '';
+
+  loginUser = this.frontEndService.loginUser;
+
+constructor(private spotifyService: SpotifyService, private frontEndService: BootsAndCatsService, private backendService: BootsAndCatsBackendService, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -34,5 +43,26 @@ constructor(private spotifyService: SpotifyService) { }
   captureId(itemId: string){
     this.spotifyService.currentAlbumId = itemId;
   }
+
+  addReview = (review: Review): void => {
+    console.log("fired review");
+    
+    this.backendService.addReview(review).subscribe();
+  }
+
+  submit = (): void => {
+    this.formReview.rating = this.formRating;
+    this.formReview.reviewContent = this.formReviewContent;
+    this.formReview.recommendation = this.formRecommendation;
+    this.formReview.tag = this.formTag;
+    this.formReview.userId = this.frontEndService.loginUser.id;
+    this.formReview.albumId = this.spotifyService.currentAlbumId;
+
+    console.log(this.formReview);
+    
+    this.addReview(this.formReview)
+    this.router.navigate(['/review']);
+
+  };
+
 }
- 

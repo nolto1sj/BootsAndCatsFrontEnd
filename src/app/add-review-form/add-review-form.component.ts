@@ -32,7 +32,6 @@ export class AddReviewFormComponent implements OnInit {
     this.backendService.addReview(review).subscribe();
   }
 
-
   submit = (): void => {
     this.formReview.rating = this.formRating;
     this.formReview.reviewContent = this.formReviewContent;
@@ -45,9 +44,6 @@ export class AddReviewFormComponent implements OnInit {
     
     this.addReview(this.formReview)
     this.router.navigate(['/review']);
-    // this.formRating = 1;
-    // this.formReviewContent = '';
-    // this.formRecommendation = false;
   };
 
 
