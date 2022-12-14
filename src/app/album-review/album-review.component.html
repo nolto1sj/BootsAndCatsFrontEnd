@@ -30,38 +30,53 @@
     font-family: unset;
   }
 </style>
-<div class="album-review-container">
-  <p></p>
-  <table class="table table-striped table-dark table-hover">
-    <tbody>
-      <tr>
-        <th>Username</th>
-        <th>Album Name</th>
-        <th>Rating</th>
-        <th>Comments</th>
-        <th>Recommended</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let review of reviews; index as i">
-        <td>{{userArray[findIndex(review)].userName}}</td>
-        <td>
-          <img img [src]="review.imageURL"  alt="">
-        </td>
-        <td>{{ review.albumName}}</td>
-        <td>{{ review.rating }}</td>
-        <td>{{ review.reviewContent }}</td>
-        <td *ngIf="review.recommendation">✓</td>
-        <td *ngIf="!review.recommendation"></td>
-        <td>{{ review.dateSubmitted }}</td>
-        <td>
-          <div *ngIf="this.frontEndService.loginUser.id == this.review.userId">
-            <button class="btn btn-dark" (click)="removeReview(review.id!)">
-              Delete
-            </button>
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let review of reviews; index as i">
+    <div class="card border-primary mb-3" style="display: flexbox">
+      <img img [src]="review.imageURL" alt="" />
+      <div class="card-body">
+        <h1 class="card-title" style="font-weight: 1000">
+          {{ review.albumName }} {{ review.rating }}/5
+        </h1>
+        <h3 class="card-subtitle mb-2 text-muted">
+          Reviewer: {{ userArray[findIndex(review)].userName }}
+        </h3>
+        <br />
+
+        <h4 class="card-text" style="font-style: italic">
+          {{ review.reviewContent }}
+        </h4>
+        <br />
+        <div
+          class="card-footer"
+          style="background-color: transparent; border-color: transparent"
+        >
+          <div>
+            <h5 *ngIf="review.recommendation">
+              Recommended ✓
+              <div
+                *ngIf="this.frontEndService.loginUser.id == this.review.userId"
+              >
+                <button
+                  class="btn btn-light"
+                  style="
+                    float: right;
+                    position: relative;
+                    bottom: 14px;
+                    width: 30%;
+                  "
+                  (click)="removeReview(review.id!)"
+                >
+                  Delete
+                </button>
+              </div>
+            </h5>
+            <h5 *ngIf="!review.recommendation">Not Recommended</h5>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+          <p>Date Submitted: {{ review.dateSubmitted }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
