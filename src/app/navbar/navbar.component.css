@@ -34,3 +34,29 @@ nav{
     font-weight: 700;
     font-style: italic;
 }
+
+.logout{
+    position: absolute;
+    right: 70px;
+}
+
+.settings{
+    position: absolute;
+    right: 5px;
+    width: 50px;
+    margin-top:6px;
+    color: gainsboro
+}
+
+.settings:hover{
+color: white;
+cursor: pointer;
+}
+
+.nav-link{
+    color:gainsboro;
+}
+
+.nav-link:hover{
+    color:white;
+}

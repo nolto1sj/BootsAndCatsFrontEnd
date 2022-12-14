@@ -25,7 +25,6 @@ loginUser: User = {} as User;
 
   logOut = (): void => {
     this.loginUser = {} as User;
-    this.router.navigate(['/login']);
     console.log(this.loginUser);
     
   }
