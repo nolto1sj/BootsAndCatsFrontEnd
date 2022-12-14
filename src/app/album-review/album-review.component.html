@@ -31,7 +31,7 @@
   }
 </style>
 <div class="grid-container">
-  <div class="grid-item" *ngFor="let review of reviews; index as i">
+  <div class="grid-item" *ngFor="let review of reviews.reverse(); index as i">
     <div class="card border-primary mb-3" style="display: flexbox">
       <img img [src]="review.imageURL" alt="" />
       <div class="card-body">
