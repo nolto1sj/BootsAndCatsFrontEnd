@@ -6,7 +6,7 @@ import { BootsAndCatsService } from '../services/boots-and-cats.service';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
 import { SpotifyService } from '../services/spotify.service';
-import { AlbumByIdResponse } from '../interfaces/album-by-id-response';
+import { AlbumByIdResponse, Image } from '../interfaces/album-by-id-response';
 
 @Component({
   selector: 'app-album-review',
@@ -14,6 +14,8 @@ import { AlbumByIdResponse } from '../interfaces/album-by-id-response';
   styleUrls: ['./album-review.component.css']
 })
 export class AlbumReviewComponent implements OnInit {
+  albumAPIResponseArray: AlbumByIdResponse[] =[];
+  albumNames: string[] = [];
   albumAPIResponse: AlbumByIdResponse = {} as AlbumByIdResponse;
   albumArray: AlbumByIdResponse[] = [];
   x: number = 0;
@@ -26,10 +28,9 @@ export class AlbumReviewComponent implements OnInit {
     private spotifyservice: SpotifyService
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    await this.loadReviews();
+    ngOnInit(): void {
+    this.loadReviews();
     this.loadUsers();
-    console.log(this.reviews.length);
   }
   
   loadUsers = (): void => {
@@ -38,12 +39,20 @@ export class AlbumReviewComponent implements OnInit {
 
   //Method to load reviews
   loadReviews = async (): Promise<void> => {
-    this.service.getReviews().subscribe((data: Review[]) => this.reviews = data);
+    this.service.getReviews().subscribe((data: Review[]) => {
+      this.reviews = data;
+      for (let review of this.reviews){
+        (this.getAlbumById(review.albumId));
+      }
+    });
+    console.log("Review length:", this.reviews.length);
     
-    for (let review of this.reviews){
-      (await this.getAlbumById(review.albumId));
-    }
-    console.log(this.albumAPIResponse);
+    
+    // let ReviewAlbumMap = new Map<Image, Review>();
+    // for (let pair of ReviewAlbumMap){
+    //   ReviewAlbumMap.set()
+    // }
+    console.log(this.albumAPIResponseArray);
     
   }
 
@@ -68,8 +77,17 @@ export class AlbumReviewComponent implements OnInit {
   }
 
   async getAlbumById(albumId: string) {
-   (await this.spotifyservice.getAlbumById(albumId)).subscribe((data => this.albumAPIResponse = data));
+   (await this.spotifyservice.getAlbumById(albumId)).subscribe((data => {
+    for (let review of this.reviews){
+      if (review.albumId == albumId){
+        review.albumName = data.name
+        review.imageURL = data.images[0].url;
+      }
+    }
+  }));
   }
+
+
 }
 
 

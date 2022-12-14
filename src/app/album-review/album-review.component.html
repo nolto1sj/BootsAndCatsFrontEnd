@@ -45,7 +45,10 @@
       </tr>
       <tr *ngFor="let review of reviews; index as i">
         <td>{{userArray[findIndex(review)].userName}}</td>
-        <td *ngFor="let album of albumArray">{{album.name}}</td>
+        <td>
+          <img img [src]="review.imageURL"  alt="">
+        </td>
+        <td>{{ review.albumName}}</td>
         <td>{{ review.rating }}</td>
         <td>{{ review.reviewContent }}</td>
         <td *ngIf="review.recommendation">✓</td>
