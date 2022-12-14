@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { SearchFeature } from '../interfaces/search-feature';
 import { SearchArtist } from '../interfaces/search-artist';
 import { RelatedArtists } from '../interfaces/related-artists';
+import { Albums } from '../interfaces/album';
+import { AlbumByIdResponse } from '../interfaces/album-by-id-response';
 
 
 @Injectable({
@@ -51,6 +53,18 @@ export class SpotifyService {
     console.log(headers);
     return this.httpClient.get<SearchFeature>(albumURL, {headers: headers});
 
+  }
+
+  async getAlbumById(id: string): Promise<Observable<AlbumByIdResponse>>{
+    const url = `https://api.spotify.com/v1/albums/${id}?market=US`;
+
+    var headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept" : "application/json",
+      "Authorization" : `Bearer ${await this.getToken()}` , //this is where we will be pasting our token from postman for right now
+    })
+
+    return this.httpClient.get<AlbumByIdResponse>(url, {headers: headers})
   }
 
   async searchArtists(searchQuery: string): Promise<Observable<SearchArtist>>{ //search feature that takes in an artist name and returns a SearchArtist

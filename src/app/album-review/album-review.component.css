@@ -1,0 +1,42 @@
+.grid-container {
+    grid-template-columns: auto auto auto;
+    padding: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+  }
+  .grid-item {
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 3%;
+  }
+
+  .card {
+    flex-direction:row;
+    box-shadow: 0 10px 40px 0 rgb(0, 0, 0);
+    width: auto;
+    overflow: hidden;
+  }
+  .card img {
+    border-style:groove;
+    border-width: 10px;
+    border-color: black;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  h1,h2,h4 {
+    color: white;
+    text-shadow: 4px 4px 6px #000000;
+    font-size: auto;
+}
+
+p{
+    font-size:small ;
+}
+.card-footer{
+    position:absolute;
+  bottom:0;
+  left: 41.5%;
+  width: 57%;
+}
