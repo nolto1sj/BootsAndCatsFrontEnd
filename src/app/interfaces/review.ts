@@ -1,7 +1,9 @@
 export interface Review {
     id?: number,
     userId?: number,
-    albumId: string;
+    albumId: string,
+    albumName: string,
+    imageURL: string,
     rating: number,
     reviewContent: string,
     recommendation: boolean,
