@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumReviewComponent } from './album-review/album-review.component';
-import { AddReviewFormComponent } from './add-review-form/add-review-form.component';
 import { AggregatorComponent } from './aggregator/aggregator.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -14,7 +13,6 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'albums', component: AlbumsComponent },
   { path: 'review', component: AlbumReviewComponent },
-  { path: 'review-form', component: AddReviewFormComponent },
   { path: 'aggregator', component: AggregatorComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '', component: LoginComponent, pathMatch:"full"}
