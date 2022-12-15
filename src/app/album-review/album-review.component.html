@@ -53,23 +53,20 @@
           <div>
             <h5 *ngIf="review.recommendation">
               Recommended ✓
-              <div
-                *ngIf="this.frontEndService.loginUser.id == this.review.userId"
-              >
-                <button
+            </h5>
+              <div >
+                <button *ngIf="this.frontEndService.loginUser.id === this.review.userId"
                   class="btn btn-light"
                   style="
                     float: right;
                     position: relative;
                     bottom: 14px;
-                    width: 30%;
-                  "
+                    width: 30%;"
                   (click)="removeReview(review.id!)"
                 >
                   Delete
                 </button>
               </div>
-            </h5>
             <h5 *ngIf="!review.recommendation">Not Recommended</h5>
           </div>
 
